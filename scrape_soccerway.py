@@ -1112,143 +1112,307 @@ def append_log(log_path: str, row: dict) -> None:
 
 DEFAULT_URL = "https://us.soccerway.com/game/bournemouth-OtpNdwrc/manchester-united-ppjDR086/?mid=QZ5U62OH"
 
+
 def derive_names_from_file(file_path: str) -> tuple[str, str]:
+    """Derive <stem>_match_data.csv and <stem>_scrape_log.csv from a .txt path."""
     base = os.path.splitext(os.path.basename(file_path))[0]
-    output = f"{base}_match_data.csv"
-    log = f"{base}_scrape_log.csv"
+    # Place output files next to the source .txt file
+    directory = os.path.dirname(os.path.abspath(file_path))
+    output = os.path.join(directory, f"{base}_match_data.csv")
+    log    = os.path.join(directory, f"{base}_scrape_log.csv")
     return output, log
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Scrape Soccerway match pages (summary + stats + lineups) to CSV"
-    )
-    parser.add_argument("--url",    help="Single Soccerway match URL")
-    parser.add_argument("--file",   help="Text file with multiple URLs (one per line)")
-    parser.add_argument("--output", default="match_data.csv",  help="Output data CSV")
-    parser.add_argument("--log",    default="scrape_log.csv",  help="Log CSV file (appended)")
-    parser.add_argument("--debug",  action="store_true",
-                        help="Save raw HTML files for inspection (debug_*.html)")
-    args = parser.parse_args()
 
-    # Auto-name output/log if --file is used and user didn't override
-    if args.file:
-        auto_output, auto_log = derive_names_from_file(args.file)
+def collect_txt_files(paths: list[str]) -> list[str]:
+    """Return a deduplicated list of .txt file paths from the given list."""
+    seen   = set()
+    result = []
+    for p in paths:
+        abs_p = os.path.abspath(p)
+        if abs_p not in seen:
+            seen.add(abs_p)
+            result.append(abs_p)
+    return result
 
-        if args.output == "match_data.csv":
-            args.output = auto_output
 
-        if args.log == "scrape_log.csv":
-            args.log = auto_log
+def scrape_file(file_path: str, driver: webdriver.Chrome, debug: bool = False) -> None:
+    """Read URLs from one .txt file, scrape them, and write per-file CSVs."""
+    output_path, log_path = derive_names_from_file(file_path)
 
-    # ── Build URL list ────────────────────────────────────────────────────────
-    urls = []
-    if args.file:
-        with open(args.file, "r") as f:
-            urls = [line.strip() for line in f if line.strip()]
-    elif args.url:
-        urls = [args.url]
-    else:
-        urls = [DEFAULT_URL]
+    with open(file_path, "r", encoding="utf-8") as fh:
+        urls = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
 
     total = len(urls)
     print(f"\n{'='*60}")
-    print(f"  Scraping {total} match(es)")
-    print(f"  Output  : {args.output}")
-    print(f"  Log     : {args.log}")
+    print(f"  File    : {file_path}")
+    print(f"  URLs    : {total}")
+    print(f"  Output  : {output_path}")
+    print(f"  Log     : {log_path}")
     print(f"{'='*60}")
 
-    # ── Shared driver (opened once for all matches) ───────────────────────────
-    driver = build_driver()
+    if total == 0:
+        print("  (no URLs found — skipping)")
+        return
 
     all_data         = []
     cumulative_total = 0.0
     run_start        = time.perf_counter()
 
-    try:
-        for i, url in enumerate(urls, start=1):
-            print(f"\n{'─'*60}")
-            print(f"  Match {i}/{total}")
-            print(f"{'─'*60}")
+    for i, url in enumerate(urls, start=1):
+        print(f"\n{'─'*60}")
+        print(f"  [{os.path.basename(file_path)}] Match {i}/{total}")
+        print(f"{'─'*60}")
 
-            log_row = {col: "" for col in LOG_COLUMNS}
-            log_row["scraped_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            log_row["url"]        = url
-            log_row["success"]    = False
+        log_row = {col: "" for col in LOG_COLUMNS}
+        log_row["scraped_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_row["url"]        = url
+        log_row["success"]    = False
 
-            try:
-                data, timing = scrape_match(url, driver=driver, debug=args.debug)
-                all_data.append(data)
+        try:
+            data, timing = scrape_match(url, driver=driver, debug=debug)
+            all_data.append(data)
 
-                # ── Print match summary ───────────────────────────────────────
-                print(f"\n── Match data (non-empty fields) {'─'*28}")
-                for col in COLUMN_ORDER:
-                    v = data.get(col, "")
-                    if v not in ("", None):
-                        print(f"  {col:<40}: {v}")
-                print("─" * 60)
+            # ── Print match summary ───────────────────────────────────────────
+            print(f"\n── Match data (non-empty fields) {'─'*28}")
+            for col in COLUMN_ORDER:
+                v = data.get(col, "")
+                if v not in ("", None):
+                    print(f"  {col:<40}: {v}")
+            print("─" * 60)
 
-                # ── Save data CSV incrementally ───────────────────────────────
-                df = pd.DataFrame(all_data).reindex(columns=COLUMN_ORDER)
-                df.to_csv(args.output, index=False)
+            # ── Save data CSV incrementally ───────────────────────────────────
+            df = pd.DataFrame(all_data).reindex(columns=COLUMN_ORDER)
+            df.to_csv(output_path, index=False)
 
-                # ── Timing summary for this match ─────────────────────────────
-                cumulative_total += timing["t_total_s"]
-                log_row.update({
-                    "success":              timing.get("success", False),
-                    "reason":               timing.get("reason") or "none",
-                    "non_empty_fields":     timing["non_empty_fields"],
-                    "t_summary_s":          timing["t_summary_s"],
-                    "sleep_after_summary_s":timing["sleep_after_summary_s"],
-                    "t_stats_s":            timing["t_stats_s"],
-                    "sleep_after_stats_s":  timing["sleep_after_stats_s"],
-                    "t_lineups_s":          timing["t_lineups_s"],
-                    "t_scrape_only_s":      timing["t_scrape_only_s"],
-                    "t_total_s":            timing["t_total_s"],
-                    "cumulative_total_s":   round(cumulative_total, 2),
-                })
+            # ── Timing summary ────────────────────────────────────────────────
+            cumulative_total += timing["t_total_s"]
+            log_row.update({
+                "success":               timing.get("success", False),
+                "reason":                timing.get("reason") or "none",
+                "non_empty_fields":      timing["non_empty_fields"],
+                "t_summary_s":           timing["t_summary_s"],
+                "sleep_after_summary_s": timing["sleep_after_summary_s"],
+                "t_stats_s":             timing["t_stats_s"],
+                "sleep_after_stats_s":   timing["sleep_after_stats_s"],
+                "t_lineups_s":           timing["t_lineups_s"],
+                "t_scrape_only_s":       timing["t_scrape_only_s"],
+                "t_total_s":             timing["t_total_s"],
+                "cumulative_total_s":    round(cumulative_total, 2),
+            })
 
-                print(f"\n  ⏱  Summary  : {timing['t_summary_s']}s  "
-                      f"(+{timing['sleep_after_summary_s']}s sleep)")
-                print(f"  ⏱  Stats    : {timing['t_stats_s']}s  "
-                      f"(+{timing['sleep_after_stats_s']}s sleep)")
-                print(f"  ⏱  Lineups  : {timing['t_lineups_s']}s")
-                print(f"  ⏱  Pure scrape (no sleep) : {timing['t_scrape_only_s']}s")
-                print(f"  ⏱  Match total     : {timing['t_total_s']}s")
-                print(f"  ⏱  Cumulative total: {cumulative_total:.2f}s  "
-                      f"({cumulative_total/60:.1f} min)")
+            print(f"\n  ⏱  Summary  : {timing['t_summary_s']}s  "
+                  f"(+{timing['sleep_after_summary_s']}s sleep)")
+            print(f"  ⏱  Stats    : {timing['t_stats_s']}s  "
+                  f"(+{timing['sleep_after_stats_s']}s sleep)")
+            print(f"  ⏱  Lineups  : {timing['t_lineups_s']}s")
+            print(f"  ⏱  Pure scrape (no sleep) : {timing['t_scrape_only_s']}s")
+            print(f"  ⏱  Match total     : {timing['t_total_s']}s")
+            print(f"  ⏱  Cumulative total: {cumulative_total:.2f}s  "
+                  f"({cumulative_total/60:.1f} min)")
 
-            except Exception as e:
-                print(f"\n  ✗ ERROR scraping {url}: {e}")
-                log_row["success"] = False
-                log_row["reason"]  = "else"
-                cumulative_total += 0
-                log_row["cumulative_total_s"] = round(cumulative_total, 2)
-
-            # ── Random sleep between matches (skip after last match) ───────────
-            sleep_between = 0.0
-            if i < total:
-                sleep_between = jitter_sleep(8.0, 15.0)
-                print(f"  💤 Sleeping {sleep_between:.1f}s before next match...")
-
-            log_row["sleep_before_next_match_s"] = round(sleep_between, 2)
-            cumulative_total += sleep_between
+        except Exception as e:
+            print(f"\n  ✗ ERROR scraping {url}: {e}")
+            log_row["success"] = False
+            log_row["reason"]  = str(e)[:120]
             log_row["cumulative_total_s"] = round(cumulative_total, 2)
 
-            append_log(args.log, log_row)
+        # ── Random sleep between matches (skip after last match) ──────────────
+        sleep_between = 0.0
+        if i < total:
+            sleep_between = jitter_sleep(8.0, 15.0)
+            print(f"  💤 Sleeping {sleep_between:.1f}s before next match...")
+
+        log_row["sleep_before_next_match_s"] = round(sleep_between, 2)
+        cumulative_total += sleep_between
+        log_row["cumulative_total_s"] = round(cumulative_total, 2)
+
+        append_log(log_path, log_row)
+
+    # ── Per-file summary ──────────────────────────────────────────────────────
+    wall_time     = time.perf_counter() - run_start
+    success_count = sum(1 for r in all_data if r)
+    print(f"\n{'='*60}")
+    print(f"  File done — {success_count}/{total} matches scraped successfully")
+    print(f"  Wall time : {wall_time:.1f}s  ({wall_time/60:.1f} min)")
+    print(f"  Data  → {output_path}")
+    print(f"  Log   → {log_path}")
+    print(f"{'='*60}")
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Scrape Soccerway match pages (summary + stats + lineups) to CSV"
+    )
+    parser.add_argument(
+        "--url",
+        help="Single Soccerway match URL",
+    )
+    parser.add_argument(
+        "--file",
+        nargs="+",
+        metavar="FILE",
+        help="One or more .txt files, each containing URLs (one per line). "
+             "Each file gets its own <name>_match_data.csv and <name>_scrape_log.csv.",
+    )
+    parser.add_argument(
+        "--dir",
+        metavar="DIR",
+        help="Directory to scan for .txt files. Every .txt found is treated "
+             "as a URL list; each gets its own pair of output CSVs.",
+    )
+    parser.add_argument(
+        "--output",
+        default="match_data.csv",
+        help="Output data CSV (only used with --url; ignored when --file/--dir are used)",
+    )
+    parser.add_argument(
+        "--log",
+        default="scrape_log.csv",
+        help="Log CSV file (only used with --url; ignored when --file/--dir are used)",
+    )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Save raw HTML files for inspection (debug_*.html)",
+    )
+    args = parser.parse_args()
+
+    # ── Resolve which .txt files to process ───────────────────────────────────
+    txt_files: list[str] = []
+
+    if args.dir:
+        directory = os.path.abspath(args.dir)
+        if not os.path.isdir(directory):
+            parser.error(f"--dir path does not exist or is not a directory: {directory}")
+        found = sorted(
+            os.path.join(directory, f)
+            for f in os.listdir(directory)
+            if f.lower().endswith(".txt")
+        )
+        if not found:
+            print(f"  No .txt files found in: {directory}")
+            return
+        txt_files.extend(found)
+
+    if args.file:
+        for fp in args.file:
+            if not os.path.isfile(fp):
+                parser.error(f"--file path does not exist: {fp}")
+        txt_files.extend(args.file)
+
+    # Deduplicate while preserving order
+    txt_files = collect_txt_files(txt_files)
+
+    # ── Open driver once for all files ────────────────────────────────────────
+    driver = build_driver()
+    grand_start = time.perf_counter()
+
+    try:
+        if txt_files:
+            # ── Multi-file mode ───────────────────────────────────────────────
+            print(f"\n  Processing {len(txt_files)} file(s):")
+            for fp in txt_files:
+                print(f"    • {fp}")
+
+            for fp in txt_files:
+                scrape_file(fp, driver=driver, debug=args.debug)
+
+        else:
+            # ── Single-URL / default mode ─────────────────────────────────────
+            url = args.url or DEFAULT_URL
+            urls = [url]
+
+            total = len(urls)
+            print(f"\n{'='*60}")
+            print(f"  Scraping {total} match(es)")
+            print(f"  Output  : {args.output}")
+            print(f"  Log     : {args.log}")
+            print(f"{'='*60}")
+
+            all_data         = []
+            cumulative_total = 0.0
+            run_start        = time.perf_counter()
+
+            for i, u in enumerate(urls, start=1):
+                print(f"\n{'─'*60}")
+                print(f"  Match {i}/{total}")
+                print(f"{'─'*60}")
+
+                log_row = {col: "" for col in LOG_COLUMNS}
+                log_row["scraped_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                log_row["url"]        = u
+                log_row["success"]    = False
+
+                try:
+                    data, timing = scrape_match(u, driver=driver, debug=args.debug)
+                    all_data.append(data)
+
+                    print(f"\n── Match data (non-empty fields) {'─'*28}")
+                    for col in COLUMN_ORDER:
+                        v = data.get(col, "")
+                        if v not in ("", None):
+                            print(f"  {col:<40}: {v}")
+                    print("─" * 60)
+
+                    df = pd.DataFrame(all_data).reindex(columns=COLUMN_ORDER)
+                    df.to_csv(args.output, index=False)
+
+                    cumulative_total += timing["t_total_s"]
+                    log_row.update({
+                        "success":               timing.get("success", False),
+                        "reason":                timing.get("reason") or "none",
+                        "non_empty_fields":      timing["non_empty_fields"],
+                        "t_summary_s":           timing["t_summary_s"],
+                        "sleep_after_summary_s": timing["sleep_after_summary_s"],
+                        "t_stats_s":             timing["t_stats_s"],
+                        "sleep_after_stats_s":   timing["sleep_after_stats_s"],
+                        "t_lineups_s":           timing["t_lineups_s"],
+                        "t_scrape_only_s":       timing["t_scrape_only_s"],
+                        "t_total_s":             timing["t_total_s"],
+                        "cumulative_total_s":    round(cumulative_total, 2),
+                    })
+
+                    print(f"\n  ⏱  Summary  : {timing['t_summary_s']}s  "
+                          f"(+{timing['sleep_after_summary_s']}s sleep)")
+                    print(f"  ⏱  Stats    : {timing['t_stats_s']}s  "
+                          f"(+{timing['sleep_after_stats_s']}s sleep)")
+                    print(f"  ⏱  Lineups  : {timing['t_lineups_s']}s")
+                    print(f"  ⏱  Pure scrape (no sleep) : {timing['t_scrape_only_s']}s")
+                    print(f"  ⏱  Match total     : {timing['t_total_s']}s")
+                    print(f"  ⏱  Cumulative total: {cumulative_total:.2f}s  "
+                          f"({cumulative_total/60:.1f} min)")
+
+                except Exception as e:
+                    print(f"\n  ✗ ERROR scraping {u}: {e}")
+                    log_row["success"] = False
+                    log_row["reason"]  = str(e)[:120]
+                    log_row["cumulative_total_s"] = round(cumulative_total, 2)
+
+                sleep_between = 0.0
+                if i < total:
+                    sleep_between = jitter_sleep(8.0, 15.0)
+                    print(f"  💤 Sleeping {sleep_between:.1f}s before next match...")
+
+                log_row["sleep_before_next_match_s"] = round(sleep_between, 2)
+                cumulative_total += sleep_between
+                log_row["cumulative_total_s"] = round(cumulative_total, 2)
+
+                append_log(args.log, log_row)
+
+            wall_time     = time.perf_counter() - run_start
+            success_count = sum(1 for r in all_data if r)
+            print(f"\n{'='*60}")
+            print(f"  Done — {success_count}/{total} matches scraped successfully")
+            print(f"  Wall time     : {wall_time:.1f}s  ({wall_time/60:.1f} min)")
+            print(f"  Data saved to : {args.output}")
+            print(f"  Log saved to  : {args.log}")
+            print(f"{'='*60}\n")
 
     finally:
         driver.quit()
-        print(f"\n  Chrome closed.")
-
-    # ── Final summary ─────────────────────────────────────────────────────────
-    wall_time = time.perf_counter() - run_start
-    success_count = sum(1 for r in all_data if r)
-    print(f"\n{'='*60}")
-    print(f"  Done — {success_count}/{total} matches scraped successfully")
-    print(f"  Wall time     : {wall_time:.1f}s  ({wall_time/60:.1f} min)")
-    print(f"  Data saved to : {args.output}")
-    print(f"  Log saved to  : {args.log}")
-    print(f"{'='*60}\n")
+        grand_wall = time.perf_counter() - grand_start
+        print(f"\n  Chrome closed.  Grand total wall time: {grand_wall:.1f}s "
+              f"({grand_wall/60:.1f} min)\n")
 
 
 if __name__ == "__main__":
