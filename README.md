@@ -22,10 +22,10 @@ An end-to-end machine learning project covering the collection, analysis, and pr
 
 ```
 project/
-├── scrape_links.py          # Stage 1: collect match URLs
-├── scrape_soccerway.py      # Stage 2: scrape match data
+├── link_scraper.py          # Stage 1: collect match URLs
+├── match_scraper.py         # Stage 2: scrape match data
 │
-├── links/                   # .txt files produced by scrape_links.py
+├── links/                   # .txt files produced by link_scraper.py
 ├── scraped_links/           # .txt files moved here after scraping
 ├── scraped_data/            # match data CSVs
 └── scraped_logs/            # per-file scrape log CSVs
@@ -59,17 +59,17 @@ Google Chrome must be installed on the system. `webdriver-manager` downloads the
 
 ### Link Scraper
 
-**Script:** `scrape_links.py`
+**Script:** `link_scraper.py`
 
 Navigates to a league's results page, clicks "Show more matches" repeatedly until all matches are loaded, then extracts and saves every match URL. Only links from within match-row containers are collected; navigation links, team profile pages, and other incidental links on the page are excluded.
 
 Output files are named after the league and season they correspond to, for example:
 
 ```
+egypt_premier_league_2024-2025.txt
 england_premier_league_2025-2026.txt
 england_premier_league_2024-2025.txt
 germany_bundesliga_2024-2025.txt
-egypt_premier_league_2024-2025.txt
 ```
 
 The `egypt_` prefix is used to distinguish the Egyptian Premier League from the English one. All 28 configured leagues follow the same naming convention.
@@ -89,26 +89,26 @@ The `egypt_` prefix is used to distinguish the Egyptian Premier League from the 
 
 ```bash
 # Test a single results page
-python scrape_links.py --link "https://us.soccerway.com/germany/bundesliga/results/"
+python link_scraper.py --link "https://us.soccerway.com/germany/bundesliga/results/"
 
 # Scrape from a custom list of results URLs
-python scrape_links.py --file my_urls.txt --output-dir ./out
+python link_scraper.py --file my_urls.txt --output-dir ./out
 
 # Scrape one configured league (both seasons)
-python scrape_links.py --league bundesliga
+python link_scraper.py --league bundesliga
 
 # Scrape all German leagues
-python scrape_links.py --prefix germany_
+python link_scraper.py --prefix germany_
 
 # Scrape all configured leagues
-python scrape_links.py --output-dir ./links
+python link_scraper.py --output-dir ./links
 ```
 
 ---
 
 ### Match Scraper
 
-**Script:** `scrape_soccerway.py`
+**Script:** `match_scraper.py`
 
 For each match URL, the scraper visits three tabs on the match page — Summary, Stats, and Lineups — and consolidates the data into a single row. Results are written to a CSV file incrementally after each match so that progress is not lost if the run is interrupted. A separate log CSV is written alongside the data file to record timing information, success status, and failure reasons for every URL.
 
@@ -141,27 +141,27 @@ The `reason` field records why a match was not scraped successfully, for example
 
 ```bash
 # Scrape a single match (useful for testing)
-python scrape_soccerway.py --url "https://us.soccerway.com/match/..."
+python match_scraper.py --url "https://us.soccerway.com/match/..."
 
 # Scrape all matches in one file
-python scrape_soccerway.py --file links/germany_bundesliga_2024-2025.txt
+python match_scraper.py --file links/germany_bundesliga_2024-2025.txt
 
 # Scrape multiple files in one run
-python scrape_soccerway.py --file links/england_premier_league_2024-2025.txt \
+python match_scraper.py --file links/england_premier_league_2024-2025.txt \
                                    links/england_championship_2024-2025.txt
 
 # Scrape every .txt file in a directory
-python scrape_soccerway.py --dir ./links
+python match_scraper.py --dir ./links
 
 # Combine --dir with extra files
-python scrape_soccerway.py --dir ./links --file extra_matches.txt
+python match_scraper.py --dir ./links --file extra_matches.txt
 
 # Save a single match to a named file
-python scrape_soccerway.py --url "https://us.soccerway.com/match/..." \
+python match_scraper.py --url "https://us.soccerway.com/match/..." \
                            --output bvb_vs_fcb.csv --log bvb_vs_fcb_log.csv
 
 # Debug mode
-python scrape_soccerway.py --file links/test.txt --debug
+python match_scraper.py --file links/test.txt --debug
 ```
 
 ---
