@@ -1,8 +1,0 @@
-scraped_at,url,success,reason,non_empty_fields,t_summary_s,sleep_after_summary_s,t_stats_s,sleep_after_stats_s,t_lineups_s,t_scrape_only_s,t_total_s,sleep_before_next_match_s,cumulative_total_s
-2026-04-07 19:04:57,https://us.soccerway.com/game/arsenal-hA1Zm19f/wolves-j3Azpf5d/?mid=M1w8YmqE,True,none,53,8.51,2.8,2.57,2.63,2.43,13.51,19.06,11.22,30.28
-2026-04-07 19:05:28,https://us.soccerway.com/game/aston-villa-W00wmLO0/manchester-united-ppjDR086/?mid=UgXnfPvC,True,none,119,3.13,2.05,2.26,1.39,1.9,7.29,10.88,14.59,55.75
-2026-04-07 19:05:53,https://us.soccerway.com/game/bayer-leverkusen-4jcj2zMd/wolfsburg-nwkTahLL/?mid=Stc23V0c,True,none,117,2.15,2.84,2.11,2.27,2.02,6.28,11.55,13.39,80.68
-2026-04-07 19:06:18,https://us.soccerway.com/game/real-oviedo-SzYzw34K/sevilla-h8oAv4Ts/?mid=GKUBRMOk,True,none,119,2.2,1.64,2.37,1.62,2.3,6.87,10.26,11.16,102.1
-2026-04-07 19:06:40,https://us.soccerway.com/gasme/bayer-leverkusen-4jcj2zMd/wolfsburg-nwkTahLL/?mid=Stc23V0c,False,false,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,14.45,116.56
-2026-04-07 19:06:54,https://us.soccerway.com/game/crystal-palace-AovF1Mia/leeds-tUxUbLR2/?mid=0EuWc7um,True,none,117,2.74,2.88,2.27,2.27,2.16,7.17,12.46,11.91,140.93
-2026-04-07 19:07:18,https://us.soccerway.com/game/burundi-IeBFvsBE/chad-t8VC3nNA/?mid=8Qcnt2VI,False,no_stats,18,2.4,1.96,2.04,0.0,0.0,4.44,6.47,0.0,147.4

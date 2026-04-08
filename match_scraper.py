@@ -1112,14 +1112,23 @@ def append_log(log_path: str, row: dict) -> None:
 
 DEFAULT_URL = "https://us.soccerway.com/game/bournemouth-OtpNdwrc/manchester-united-ppjDR086/?mid=QZ5U62OH"
 
+SCRAPED_DATA_DIR = "scraped_data"
+SCRAPED_LOGS_DIR = "scraped_logs"
+SCRAPED_LINKS_DIR = "scraped_links"
+
+
+def ensure_directories():
+    os.makedirs(SCRAPED_DATA_DIR, exist_ok=True)
+    os.makedirs(SCRAPED_LOGS_DIR, exist_ok=True)
+    os.makedirs(SCRAPED_LINKS_DIR, exist_ok=True)
+
 
 def derive_names_from_file(file_path: str) -> tuple[str, str]:
     """Derive <stem>_match_data.csv and <stem>_scrape_log.csv from a .txt path."""
     base = os.path.splitext(os.path.basename(file_path))[0]
     # Place output files next to the source .txt file
-    directory = os.path.dirname(os.path.abspath(file_path))
-    output = os.path.join(directory, f"{base}_match_data.csv")
-    log    = os.path.join(directory, f"{base}_scrape_log.csv")
+    output = os.path.join(SCRAPED_DATA_DIR, f"{base}_match_data.csv")
+    log    = os.path.join(SCRAPED_LOGS_DIR, f"{base}_scrape_log.csv")
     return output, log
 
 
@@ -1228,12 +1237,20 @@ def scrape_file(file_path: str, driver: webdriver.Chrome, debug: bool = False) -
 
         append_log(log_path, log_row)
 
+    # ── Move processed .txt file to scraped_links ─────────────────────
+    try:
+        dest_path = os.path.join(SCRAPED_LINKS_DIR, os.path.basename(file_path))
+        os.replace(file_path, dest_path)  # overwrite if exists
+        print(f"  Moved file → {dest_path}")
+    except Exception as e:
+        print(f"  ⚠ Could not move file: {e}")
+
     # ── Per-file summary ──────────────────────────────────────────────────────
     wall_time     = time.perf_counter() - run_start
     success_count = sum(1 for r in all_data if r)
     print(f"\n{'='*60}")
     print(f"  File done — {success_count}/{total} matches scraped successfully")
-    print(f"  Wall time : {wall_time:.1f}s  ({wall_time/60:.1f} min)")
+    print(f"  Total time : {wall_time:.1f}s  ({wall_time/60:.1f} min)")
     print(f"  Data  → {output_path}")
     print(f"  Log   → {log_path}")
     print(f"{'='*60}")
@@ -1277,6 +1294,8 @@ def main():
     )
     args = parser.parse_args()
 
+    ensure_directories()
+    
     # ── Resolve which .txt files to process ───────────────────────────────────
     txt_files: list[str] = []
 
@@ -1403,7 +1422,7 @@ def main():
             success_count = sum(1 for r in all_data if r)
             print(f"\n{'='*60}")
             print(f"  Done — {success_count}/{total} matches scraped successfully")
-            print(f"  Wall time     : {wall_time:.1f}s  ({wall_time/60:.1f} min)")
+            print(f"  Total time     : {wall_time:.1f}s  ({wall_time/60:.1f} min)")
             print(f"  Data saved to : {args.output}")
             print(f"  Log saved to  : {args.log}")
             print(f"{'='*60}\n")
@@ -1411,7 +1430,7 @@ def main():
     finally:
         driver.quit()
         grand_wall = time.perf_counter() - grand_start
-        print(f"\n  Chrome closed.  Grand total wall time: {grand_wall:.1f}s "
+        print(f"\n  Chrome closed.  Grand total time: {grand_wall:.1f}s "
               f"({grand_wall/60:.1f} min)\n")
 
 

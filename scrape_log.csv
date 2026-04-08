@@ -1,8 +1,0 @@
-scraped_at,url,success,non_empty_fields,t_summary_s,sleep_after_summary_s,t_stats_s,sleep_after_stats_s,t_lineups_s,t_scrape_only_s,t_total_s,sleep_before_next_match_s,cumulative_total_s
-2026-04-07 18:08:30,https://us.soccerway.com/game/machida-zelvia-CUSC1dab/vissel-kobe-698tGI9q/?mid=KIY9XorQ,True,31,8.03,1.97,2.27,1.94,2.57,12.87,16.97,0.0,16.97
-2026-04-07 18:09:13,https://us.soccerway.com/game/aek-ANpZncAM/rayo-vallecano-8bcjFy6O/?mid=61dcIN26,True,17,4.71,2.07,2.34,2.49,2.79,9.84,14.61,0.0,14.61
-2026-04-07 18:10:26,https://us.soccerway.com/game/rijeka-zXKuUR5J/strasbourg-nP6UzIU1/?mid=zDfqwCHb,True,117,7.26,1.96,2.48,2.32,4.41,14.15,18.61,0.0,18.61
-2026-04-07 19:10:07,https://us.soccerway.com/game/bournemouth-OtpNdwrc/chelsea-4fGZN2oK/?mid=0rgRCqPd,True,none,53,5.27,1.26,2.35,1.2,2.03,9.65,12.26,0.0,12.26
-2026-04-07 19:13:26,https://us.soccerway.com/game/bournemouth-OtpNdwrc/chelsea-4fGZN2oK/?mid=0rgRCqPd,True,none,53,14.71,2.45,2.02,1.01,2.5,19.23,22.86,0.0,22.86
-2026-04-07 19:24:14,https://us.soccerway.com/game/bournemouth-OtpNdwrc/chelsea-4fGZN2oK/?mid=0rgRCqPd,True,none,53,6.07,2.9,2.57,1.8,3.59,12.23,17.11,0.0,17.11
-2026-04-07 19:25:02,https://us.soccerway.com/game/bayer-leverkusen-4jcj2zMd/wolfsburg-nwkTahLL/?mid=Stc23V0c,True,none,116,5.46,2.25,2.37,2.9,4.06,11.89,17.21,0.0,17.21
