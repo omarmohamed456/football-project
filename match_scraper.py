@@ -76,7 +76,7 @@ def get_page_html(driver, url: str, extra_wait: float = 3.0) -> str:
     Content markers cover all three tabs (summary, stats, lineups).
     """
     driver.get(url)
-    time.sleep(1.0)  # hard floor — let initial JS execute
+    time.sleep(0.5)  # hard floor — let initial JS execute
 
     CONTENT_SELECTORS = [
         "[class*='wcl-homeValue']",                  # stats tab
@@ -86,7 +86,7 @@ def get_page_html(driver, url: str, extra_wait: float = 3.0) -> str:
         "[class*='wcl-category_']",                  # any wcl stat row
     ]
 
-    max_wait   = 8.0
+    max_wait   = 5.0
     poll_every = 0.3
     elapsed    = 0.0
 
@@ -909,7 +909,7 @@ def scrape_match(
     #     data["season"] = extract_season(base_url, match_date=data.get("date", ""))
 
     # Random sleep between summary → stats
-    sleep1 = jitter_sleep(1.0, 3.0)
+    sleep1 = jitter_sleep(0.5, 2.0)
     timing["sleep_after_summary_s"] = round(sleep1, 2)
     print(f"      → slept {timing['sleep_after_summary_s']}s before stats")
 
@@ -947,7 +947,7 @@ def scrape_match(
         return data, timing
 
     # Random sleep between stats → lineups
-    sleep2 = jitter_sleep(1.0, 3.0)
+    sleep2 = jitter_sleep(0.5, 2.0)
     timing["sleep_after_stats_s"] = round(sleep2, 2)
     print(f"      → slept {timing['sleep_after_stats_s']}s before lineups")
 
@@ -1228,7 +1228,7 @@ def scrape_file(file_path: str, driver: webdriver.Chrome, debug: bool = False) -
         # ── Random sleep between matches (skip after last match) ──────────────
         sleep_between = 0.0
         if i < total:
-            sleep_between = jitter_sleep(8.0, 15.0)
+            sleep_between = jitter_sleep(4.0, 8.0)
             print(f"  💤 Sleeping {sleep_between:.1f}s before next match...")
 
         log_row["sleep_before_next_match_s"] = round(sleep_between, 2)
@@ -1409,7 +1409,7 @@ def main():
 
                 sleep_between = 0.0
                 if i < total:
-                    sleep_between = jitter_sleep(8.0, 15.0)
+                    sleep_between = jitter_sleep(4.0, 8.0)
                     print(f"  💤 Sleeping {sleep_between:.1f}s before next match...")
 
                 log_row["sleep_before_next_match_s"] = round(sleep_between, 2)
