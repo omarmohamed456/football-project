@@ -1,0 +1,698 @@
+══════════════════════════════════════════════════════════════════
+  Starting Chrome (single instance for entire run)
+══════════════════════════════════════════════════════════════════
+  ✓ Chrome is ready.
+
+  Leagues queued : 28
+  Output dir     : ./links
+
+
+League 1/28: egypt_premier_league
+
+══════════════════════════════════════════════════════════════════
+  League: egypt_premier_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/egypt/premier-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/egypt/premier-league/results/
+  Loading: https://us.soccerway.com/egypt/premier-league/results/
+  egypt_premier_league 2025-2026 — 230 match links collected …ore' (2x) …
+  ✓ egypt_premier_league 2025-2026 — 230 match links  (2 'Show more' click(s))
+  ✓ Saved 230 URLs -> ./links\egypt_premier_league_2025-2026.txt
+  Sleeping 6.2s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/egypt/premier-league-2024-2025/results/
+  Loading: https://us.soccerway.com/egypt/premier-league-2024-2025/results/
+  egypt_premier_league 2024-2025 — 225 match links collected …ore' (2x) …
+  ✓ egypt_premier_league 2024-2025 — 225 match links  (2 'Show more' click(s))
+  ✓ Saved 225 URLs -> ./links\egypt_premier_league_2024-2025.txt
+  Sleeping 10.1s between leagues …
+
+League 2/28: egypt_egypt_cup
+
+══════════════════════════════════════════════════════════════════
+  League: egypt_egypt_cup
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/egypt/egypt-cup-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/egypt/egypt-cup/results/
+  Loading: https://us.soccerway.com/egypt/egypt-cup/results/
+  egypt_egypt_cup 2025-2026 — 30 match links collected …
+  ✓ egypt_egypt_cup 2025-2026 — 30 match links  (0 'Show more' click(s))
+  ✓ Saved 30 URLs -> ./links\egypt_egypt_cup_2025-2026.txt
+  Sleeping 6.8s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/egypt/egypt-cup-2024-2025/results/
+  Loading: https://us.soccerway.com/egypt/egypt-cup-2024-2025/results/
+  egypt_egypt_cup 2024-2025 — 31 match links collected …
+  ✓ egypt_egypt_cup 2024-2025 — 31 match links  (0 'Show more' click(s))
+  ✓ Saved 31 URLs -> ./links\egypt_egypt_cup_2024-2025.txt
+  Sleeping 8.2s between leagues …
+
+League 3/28: england_premier_league
+
+══════════════════════════════════════════════════════════════════
+  League: england_premier_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/england/premier-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/england/premier-league/results/
+  Loading: https://us.soccerway.com/england/premier-league/results/
+  england_premier_league 2025-2026 — 309 match links collected …ore' (3x) …
+  ✓ england_premier_league 2025-2026 — 309 match links  (3 'Show more' click(s))
+  ✓ Saved 309 URLs -> ./links\england_premier_league_2025-2026.txt
+  Sleeping 5.2s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/england/premier-league-2024-2025/results/
+  Loading: https://us.soccerway.com/england/premier-league-2024-2025/results/
+  england_premier_league 2024-2025 — 380 match links collected …ore' (3x) …
+  ✓ england_premier_league 2024-2025 — 380 match links  (3 'Show more' click(s))
+  ✓ Saved 380 URLs -> ./links\england_premier_league_2024-2025.txt
+  Sleeping 14.1s between leagues …
+
+League 4/28: france_ligue_1
+
+══════════════════════════════════════════════════════════════════
+  League: france_ligue_1
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/france/ligue-1-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/france/ligue-1/results/
+  Loading: https://us.soccerway.com/france/ligue-1/results/
+  france_ligue_1 2025-2026 — 251 match links collected …ore' (2x) …
+  ✓ france_ligue_1 2025-2026 — 251 match links  (2 'Show more' click(s))
+  ✓ Saved 251 URLs -> ./links\france_ligue_1_2025-2026.txt
+  Sleeping 6.9s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/france/ligue-1-2024-2025/results/
+  Loading: https://us.soccerway.com/france/ligue-1-2024-2025/results/
+  france_ligue_1 2024-2025 — 310 match links collected …ore' (3x) …
+  ✓ france_ligue_1 2024-2025 — 310 match links  (3 'Show more' click(s))
+  ✓ Saved 310 URLs -> ./links\france_ligue_1_2024-2025.txt
+  Sleeping 10.9s between leagues …
+
+League 5/28: germany_bundesliga
+
+══════════════════════════════════════════════════════════════════
+  League: germany_bundesliga
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/germany/bundesliga-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/germany/bundesliga/results/
+  Loading: https://us.soccerway.com/germany/bundesliga/results/
+  germany_bundesliga 2025-2026 — 252 match links collected …ore' (2x) …
+  ✓ germany_bundesliga 2025-2026 — 252 match links  (2 'Show more' click(s))
+  ✓ Saved 252 URLs -> ./links\germany_bundesliga_2025-2026.txt
+  Sleeping 8.3s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/germany/bundesliga-2024-2025/results/
+  Loading: https://us.soccerway.com/germany/bundesliga-2024-2025/results/
+  germany_bundesliga 2024-2025 — 308 match links collected …ore' (3x) …
+  ✓ germany_bundesliga 2024-2025 — 308 match links  (3 'Show more' click(s))
+  ✓ Saved 308 URLs -> ./links\germany_bundesliga_2024-2025.txt
+  Sleeping 12.2s between leagues …
+
+League 6/28: italy_serie_a
+
+══════════════════════════════════════════════════════════════════
+  League: italy_serie_a
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/italy/serie-a-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/italy/serie-a/results/
+  Loading: https://us.soccerway.com/italy/serie-a/results/
+  italy_serie_a 2025-2026 — 310 match links collected …ore' (3x) …
+  ✓ italy_serie_a 2025-2026 — 310 match links  (3 'Show more' click(s))
+  ✓ Saved 310 URLs -> ./links\italy_serie_a_2025-2026.txt
+  Sleeping 9.0s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/italy/serie-a-2024-2025/results/
+  Loading: https://us.soccerway.com/italy/serie-a-2024-2025/results/
+  italy_serie_a 2024-2025 — 380 match links collected …ore' (3x) …
+  ✓ italy_serie_a 2024-2025 — 380 match links  (3 'Show more' click(s))
+  ✓ Saved 380 URLs -> ./links\italy_serie_a_2024-2025.txt
+  Sleeping 10.5s between leagues …
+
+League 7/28: spain_laliga
+
+══════════════════════════════════════════════════════════════════
+  League: spain_laliga
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/spain/laliga-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/spain/laliga/results/
+  Loading: https://us.soccerway.com/spain/laliga/results/
+  spain_laliga 2025-2026 — 300 match links collected …ore' (2x) …
+  ✓ spain_laliga 2025-2026 — 300 match links  (2 'Show more' click(s))
+  ✓ Saved 300 URLs -> ./links\spain_laliga_2025-2026.txt
+  Sleeping 8.5s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/spain/laliga-2024-2025/results/
+  Loading: https://us.soccerway.com/spain/laliga-2024-2025/results/
+  spain_laliga 2024-2025 — 380 match links collected …ore' (3x) …
+  ✓ spain_laliga 2024-2025 — 380 match links  (3 'Show more' click(s))
+  ✓ Saved 380 URLs -> ./links\spain_laliga_2024-2025.txt
+  Sleeping 13.5s between leagues …
+
+League 8/28: netherlands_eredivisie
+
+══════════════════════════════════════════════════════════════════
+  League: netherlands_eredivisie
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/netherlands/eredivisie-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/netherlands/eredivisie/results/
+  Loading: https://us.soccerway.com/netherlands/eredivisie/results/
+  netherlands_eredivisie 2025-2026 — 261 match links collected …ore' (2x) …
+  ✓ netherlands_eredivisie 2025-2026 — 261 match links  (2 'Show more' click(s))
+  ✓ Saved 261 URLs -> ./links\netherlands_eredivisie_2025-2026.txt
+  Sleeping 6.6s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/netherlands/eredivisie-2024-2025/results/
+  Loading: https://us.soccerway.com/netherlands/eredivisie-2024-2025/results/
+  netherlands_eredivisie 2024-2025 — 321 match links collected …ore' (3x) …
+  ✓ netherlands_eredivisie 2024-2025 — 321 match links  (3 'Show more' click(s))
+  ✓ Saved 321 URLs -> ./links\netherlands_eredivisie_2024-2025.txt
+  Sleeping 9.9s between leagues …
+
+League 9/28: england_championship
+
+══════════════════════════════════════════════════════════════════
+  League: england_championship
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/england/championship-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/england/championship/results/
+  Loading: https://us.soccerway.com/england/championship/results/
+  england_championship 2025-2026 — 490 match links collected …ore' (4x) …
+  ✓ england_championship 2025-2026 — 490 match links  (4 'Show more' click(s))
+  ✓ Saved 490 URLs -> ./links\england_championship_2025-2026.txt
+  Sleeping 5.4s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/england/championship-2024-2025/results/
+  Loading: https://us.soccerway.com/england/championship-2024-2025/results/
+  england_championship 2024-2025 — 557 match links collected …ore' (5x) …
+  ✓ england_championship 2024-2025 — 557 match links  (5 'Show more' click(s))
+  ✓ Saved 557 URLs -> ./links\england_championship_2024-2025.txt
+  Sleeping 14.3s between leagues …
+
+League 10/28: france_ligue_2
+
+══════════════════════════════════════════════════════════════════
+  League: france_ligue_2
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/france/ligue-2-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/france/ligue-2/results/
+  Loading: https://us.soccerway.com/france/ligue-2/results/
+  france_ligue_2 2025-2026 — 261 match links collected …ore' (2x) …
+  ✓ france_ligue_2 2025-2026 — 261 match links  (2 'Show more' click(s))
+  ✓ Saved 261 URLs -> ./links\france_ligue_2_2025-2026.txt
+  Sleeping 5.6s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/france/ligue-2-2024-2025/results/
+  Loading: https://us.soccerway.com/france/ligue-2-2024-2025/results/
+  france_ligue_2 2024-2025 — 308 match links collected …ore' (3x) …
+  ✓ france_ligue_2 2024-2025 — 308 match links  (3 'Show more' click(s))
+  ✓ Saved 308 URLs -> ./links\france_ligue_2_2024-2025.txt
+  Sleeping 9.3s between leagues …
+
+League 11/28: germany_2_bundesliga
+
+══════════════════════════════════════════════════════════════════
+  League: germany_2_bundesliga
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/germany/2-bundesliga-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/germany/2-bundesliga/results/
+  Loading: https://us.soccerway.com/germany/2-bundesliga/results/
+  germany_2_bundesliga 2025-2026 — 252 match links collected …ore' (2x) …
+  ✓ germany_2_bundesliga 2025-2026 — 252 match links  (2 'Show more' click(s))
+  ✓ Saved 252 URLs -> ./links\germany_2_bundesliga_2025-2026.txt
+  Sleeping 6.3s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/germany/2-bundesliga-2024-2025/results/
+  Loading: https://us.soccerway.com/germany/2-bundesliga-2024-2025/results/
+  germany_2_bundesliga 2024-2025 — 308 match links collected …ore' (3x) …
+  ✓ germany_2_bundesliga 2024-2025 — 308 match links  (3 'Show more' click(s))
+  ✓ Saved 308 URLs -> ./links\germany_2_bundesliga_2024-2025.txt
+  Sleeping 8.8s between leagues …
+
+League 12/28: italy_serie_b
+
+══════════════════════════════════════════════════════════════════
+  League: italy_serie_b
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/italy/serie-b-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/italy/serie-b/results/
+  Loading: https://us.soccerway.com/italy/serie-b/results/
+  italy_serie_b 2025-2026 — 329 match links collected …ore' (3x) …
+  ✓ italy_serie_b 2025-2026 — 329 match links  (3 'Show more' click(s))
+  ✓ Saved 329 URLs -> ./links\italy_serie_b_2025-2026.txt
+  Sleeping 7.7s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/italy/serie-b-2024-2025/results/
+  Loading: https://us.soccerway.com/italy/serie-b-2024-2025/results/
+  italy_serie_b 2024-2025 — 390 match links collected …ore' (3x) …
+  ✓ italy_serie_b 2024-2025 — 390 match links  (3 'Show more' click(s))
+  ✓ Saved 390 URLs -> ./links\italy_serie_b_2024-2025.txt
+  Sleeping 10.7s between leagues …
+
+League 13/28: spain_laliga2
+
+══════════════════════════════════════════════════════════════════
+  League: spain_laliga2
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/spain/laliga2-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/spain/laliga2/results/
+  Loading: https://us.soccerway.com/spain/laliga2/results/
+  spain_laliga2 2025-2026 — 374 match links collected …ore' (3x) …
+  ✓ spain_laliga2 2025-2026 — 374 match links  (3 'Show more' click(s))
+  ✓ Saved 374 URLs -> ./links\spain_laliga2_2025-2026.txt
+  Sleeping 5.5s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/spain/laliga2-2024-2025/results/
+  Loading: https://us.soccerway.com/spain/laliga2-2024-2025/results/
+  spain_laliga2 2024-2025 — 468 match links collected …ore' (4x) …
+  ✓ spain_laliga2 2024-2025 — 468 match links  (4 'Show more' click(s))
+  ✓ Saved 468 URLs -> ./links\spain_laliga2_2024-2025.txt
+  Sleeping 10.0s between leagues …
+
+League 14/28: netherlands_eerste_divisie
+
+══════════════════════════════════════════════════════════════════
+  League: netherlands_eerste_divisie
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/netherlands/eerste-divisie-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/netherlands/eerste-divisie/results/
+  Loading: https://us.soccerway.com/netherlands/eerste-divisie/results/
+  netherlands_eerste_divisie 2025-2026 — 349 match links collected …ore' (3x) …
+  ✓ netherlands_eerste_divisie 2025-2026 — 349 match links  (3 'Show more' click(s))
+  ✓ Saved 349 URLs -> ./links\netherlands_eerste_divisie_2025-2026.txt
+  Sleeping 5.7s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/netherlands/eerste-divisie-2024-2025/results/
+  Loading: https://us.soccerway.com/netherlands/eerste-divisie-2024-2025/results/
+  netherlands_eerste_divisie 2024-2025 — 380 match links collected …ore' (3x) …
+  ✓ netherlands_eerste_divisie 2024-2025 — 380 match links  (3 'Show more' click(s))
+  ✓ Saved 380 URLs -> ./links\netherlands_eerste_divisie_2024-2025.txt
+  Sleeping 12.9s between leagues …
+
+League 15/28: europe_champions_league
+
+══════════════════════════════════════════════════════════════════
+  League: europe_champions_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/europe/champions-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/europe/champions-league/results/
+  Loading: https://us.soccerway.com/europe/champions-league/results/
+  europe_champions_league 2025-2026 — 272 match links collected …ore' (2x) …
+  ✓ europe_champions_league 2025-2026 — 272 match links  (2 'Show more' click(s))
+  ✓ Saved 272 URLs -> ./links\europe_champions_league_2025-2026.txt
+  Sleeping 5.1s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/europe/champions-league-2024-2025/results/
+  Loading: https://us.soccerway.com/europe/champions-league-2024-2025/results/
+  europe_champions_league 2024-2025 — 279 match links collected …ore' (2x) …
+  ✓ europe_champions_league 2024-2025 — 279 match links  (2 'Show more' click(s))
+  ✓ Saved 279 URLs -> ./links\europe_champions_league_2024-2025.txt
+  Sleeping 12.8s between leagues …
+
+League 16/28: europe_europa_league
+
+══════════════════════════════════════════════════════════════════
+  League: europe_europa_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/europe/europa-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/europe/europa-league/results/
+  Loading: https://us.soccerway.com/europe/europa-league/results/
+  europe_europa_league 2025-2026 — 259 match links collected …ore' (2x) …
+  ✓ europe_europa_league 2025-2026 — 259 match links  (2 'Show more' click(s))
+  ✓ Saved 259 URLs -> ./links\europe_europa_league_2025-2026.txt
+  Sleeping 7.0s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/europe/europa-league-2024-2025/results/
+  Loading: https://us.soccerway.com/europe/europa-league-2024-2025/results/
+  europe_europa_league 2024-2025 — 269 match links collected …ore' (2x) …
+  ✓ europe_europa_league 2024-2025 — 269 match links  (2 'Show more' click(s))
+  ✓ Saved 269 URLs -> ./links\europe_europa_league_2024-2025.txt
+  Sleeping 11.5s between leagues …
+
+League 17/28: europe_conference_league
+
+══════════════════════════════════════════════════════════════════
+  League: europe_conference_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/europe/conference-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/europe/conference-league/results/
+  Loading: https://us.soccerway.com/europe/conference-league/results/
+  europe_conference_league 2025-2026 — 396 match links collected …ore' (3x) …
+  ✓ europe_conference_league 2025-2026 — 396 match links  (3 'Show more' click(s))
+  ✓ Saved 396 URLs -> ./links\europe_conference_league_2025-2026.txt
+  Sleeping 8.8s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/europe/conference-league-2024-2025/results/
+  Loading: https://us.soccerway.com/europe/conference-league-2024-2025/results/
+  europe_conference_league 2024-2025 — 409 match links collected …ore' (4x) …
+  ✓ europe_conference_league 2024-2025 — 409 match links  (4 'Show more' click(s))
+  ✓ Saved 409 URLs -> ./links\europe_conference_league_2024-2025.txt
+  Sleeping 14.0s between leagues …
+
+League 18/28: europe_nations_league
+
+══════════════════════════════════════════════════════════════════
+  League: europe_nations_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/europe/uefa-nations-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/europe/uefa-nations-league/results/
+  Loading: https://us.soccerway.com/europe/uefa-nations-league/results/
+  europe_nations_league 2025-2026 — 0 match links collected …
+  ✓ europe_nations_league 2025-2026 — 0 match links  (0 'Show more' click(s))
+  ✗ No match links found for europe_nations_league 2025-2026
+  Sleeping 6.4s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/europe/uefa-nations-league-2024-2025/results/
+  Loading: https://us.soccerway.com/europe/uefa-nations-league-2024-2025/results/
+  europe_nations_league 2024-2025 — 188 match links collected …ore' (1x) …
+  ✓ europe_nations_league 2024-2025 — 188 match links  (1 'Show more' click(s))
+  ✓ Saved 188 URLs -> ./links\europe_nations_league_2024-2025.txt
+  Sleeping 9.9s between leagues …
+
+League 19/28: world_world_cup
+
+══════════════════════════════════════════════════════════════════
+  League: world_world_cup
+══════════════════════════════════════════════════════════════════
+  Loading: https://us.soccerway.com/world/world-cup/results/
+  world_world_cup current — 900 links | clicked 'Show more' (9x) …
+  ✓ world_world_cup current — 905 match links  (9 'Show more' click(s))
+  ✓ Saved 905 URLs → ./links\world_world_cup_current.txt
+  Sleeping 9.8s between leagues …
+
+League 20/28: world_club_world_cup
+
+══════════════════════════════════════════════════════════════════
+  League: world_club_world_cup
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  ⚠  Constructed URL for 2024-2025: https://us.soccerway.com/world/fifa-club-world-cup-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/world/fifa-club-world-cup/results/
+  Loading: https://us.soccerway.com/world/fifa-club-world-cup/results/
+  world_club_world_cup 2025-2026 — 64 match links collected …
+  ✓ world_club_world_cup 2025-2026 — 64 match links  (0 'Show more' click(s))
+  ✓ Saved 64 URLs -> ./links\world_club_world_cup_2025-2026.txt
+  Sleeping 5.4s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/world/fifa-club-world-cup-2024-2025/results/
+  Loading: https://us.soccerway.com/world/fifa-club-world-cup-2024-2025/results/
+  world_club_world_cup 2024-2025 — 0 match links collected …
+  ✓ world_club_world_cup 2024-2025 — 0 match links  (0 'Show more' click(s))
+  ✗ No match links found for world_club_world_cup 2024-2025
+  Sleeping 10.3s between leagues …
+
+League 21/28: south_america_copa_libertadores
+
+══════════════════════════════════════════════════════════════════
+  League: south_america_copa_libertadores
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  ⚠  Constructed URL for 2024-2025: https://us.soccerway.com/south-america/copa-libertadores-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/south-america/copa-libertadores/results/
+  Loading: https://us.soccerway.com/south-america/copa-libertadores/results/
+  south_america_copa_libertadores 2025-2026 — 36 match links collected …
+  ✓ south_america_copa_libertadores 2025-2026 — 36 match links  (0 'Show more' click(s))
+  ✓ Saved 36 URLs -> ./links\south_america_copa_libertadores_2025-2026.txt
+  Sleeping 7.9s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/south-america/copa-libertadores-2024-2025/results/
+  Loading: https://us.soccerway.com/south-america/copa-libertadores-2024-2025/results/
+  south_america_copa_libertadores 2024-2025 — 0 match links collected …
+  ✓ south_america_copa_libertadores 2024-2025 — 0 match links  (0 'Show more' click(s))
+  ✗ No match links found for south_america_copa_libertadores 2024-2025
+  Sleeping 10.7s between leagues …
+
+League 22/28: south_america_copa_sudamericana
+
+══════════════════════════════════════════════════════════════════
+  League: south_america_copa_sudamericana
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  ⚠  Constructed URL for 2024-2025: https://us.soccerway.com/south-america/copa-sudamericana-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/south-america/copa-sudamericana/results/
+  Loading: https://us.soccerway.com/south-america/copa-sudamericana/results/
+  south_america_copa_sudamericana 2025-2026 — 21 match links collected …
+  ✓ south_america_copa_sudamericana 2025-2026 — 21 match links  (0 'Show more' click(s))
+  ✓ Saved 21 URLs -> ./links\south_america_copa_sudamericana_2025-2026.txt
+  Sleeping 8.7s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/south-america/copa-sudamericana-2024-2025/results/
+  Loading: https://us.soccerway.com/south-america/copa-sudamericana-2024-2025/results/
+  south_america_copa_sudamericana 2024-2025 — 0 match links collected …
+  ✓ south_america_copa_sudamericana 2024-2025 — 0 match links  (0 'Show more' click(s))
+  ✗ No match links found for south_america_copa_sudamericana 2024-2025
+  Sleeping 11.1s between leagues …
+
+League 23/28: mexico_liga_mx
+
+══════════════════════════════════════════════════════════════════
+  League: mexico_liga_mx
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/mexico/liga-mx-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/mexico/liga-mx/results/
+  Loading: https://us.soccerway.com/mexico/liga-mx/results/
+  mexico_liga_mx 2025-2026 — 287 match links collected …ore' (2x) …
+  ✓ mexico_liga_mx 2025-2026 — 287 match links  (2 'Show more' click(s))
+  ✓ Saved 287 URLs -> ./links\mexico_liga_mx_2025-2026.txt
+  Sleeping 8.0s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/mexico/liga-mx-2024-2025/results/
+  Loading: https://us.soccerway.com/mexico/liga-mx-2024-2025/results/
+  mexico_liga_mx 2024-2025 — 340 match links collected …ore' (3x) …
+  ✓ mexico_liga_mx 2024-2025 — 340 match links  (3 'Show more' click(s))
+  ✓ Saved 340 URLs -> ./links\mexico_liga_mx_2024-2025.txt
+  Sleeping 8.3s between leagues …
+
+League 24/28: japan_j1_league
+
+══════════════════════════════════════════════════════════════════
+  League: japan_j1_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  ⚠  Constructed URL for 2024-2025: https://us.soccerway.com/japan/j1-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/japan/j1-league/results/
+  Loading: https://us.soccerway.com/japan/j1-league/results/
+  japan_j1_league 2025-2026 — 92 match links collected …
+  ✓ japan_j1_league 2025-2026 — 92 match links  (0 'Show more' click(s))
+  ✓ Saved 92 URLs -> ./links\japan_j1_league_2025-2026.txt
+  Sleeping 6.8s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/japan/j1-league-2024-2025/results/
+  Loading: https://us.soccerway.com/japan/j1-league-2024-2025/results/
+  japan_j1_league 2024-2025 — 0 match links collected …
+  ✓ japan_j1_league 2024-2025 — 0 match links  (0 'Show more' click(s))
+  ✗ No match links found for japan_j1_league 2024-2025
+  Sleeping 8.4s between leagues …
+
+League 25/28: japan_j2_league
+
+══════════════════════════════════════════════════════════════════
+  League: japan_j2_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  ⚠  Constructed URL for 2024-2025: https://us.soccerway.com/japan/j2-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/japan/j2-league/results/
+  Loading: https://us.soccerway.com/japan/j2-league/results/
+  japan_j2_league 2025-2026 — 383 match links collected …ore' (3x) …
+  ✓ japan_j2_league 2025-2026 — 383 match links  (3 'Show more' click(s))
+  ✓ Saved 383 URLs -> ./links\japan_j2_league_2025-2026.txt
+  Sleeping 8.7s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/japan/j2-league-2024-2025/results/
+  Loading: https://us.soccerway.com/japan/j2-league-2024-2025/results/
+  japan_j2_league 2024-2025 — 0 match links collected …
+  ✓ japan_j2_league 2024-2025 — 0 match links  (0 'Show more' click(s))
+  ✗ No match links found for japan_j2_league 2024-2025
+  Sleeping 13.4s between leagues …
+
+League 26/28: saudi_saudi_pro_league
+
+══════════════════════════════════════════════════════════════════
+  League: saudi_saudi_pro_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/saudi-arabia/saudi-professional-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/saudi-arabia/saudi-professional-league/results/
+  Loading: https://us.soccerway.com/saudi-arabia/saudi-professional-league/results/
+  saudi_saudi_pro_league 2025-2026 — 246 match links collected …ore' (2x) …
+  ✓ saudi_saudi_pro_league 2025-2026 — 246 match links  (2 'Show more' click(s))
+  ✓ Saved 246 URLs -> ./links\saudi_saudi_pro_league_2025-2026.txt
+  Sleeping 6.7s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/saudi-arabia/saudi-professional-league-2024-2025/results/
+  Loading: https://us.soccerway.com/saudi-arabia/saudi-professional-league-2024-2025/results/
+  saudi_saudi_pro_league 2024-2025 — 306 match links collected …ore' (3x) …
+  ✓ saudi_saudi_pro_league 2024-2025 — 306 match links  (3 'Show more' click(s))
+  ✓ Saved 306 URLs -> ./links\saudi_saudi_pro_league_2024-2025.txt
+  Sleeping 9.6s between leagues …
+
+League 27/28: turkey_super_lig
+
+══════════════════════════════════════════════════════════════════
+  League: turkey_super_lig
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/turkey/super-lig-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/turkey/super-lig/results/
+  Loading: https://us.soccerway.com/turkey/super-lig/results/
+  turkey_super_lig 2025-2026 — 251 match links collected …ore' (2x) …
+  ✓ turkey_super_lig 2025-2026 — 251 match links  (2 'Show more' click(s))
+  ✓ Saved 251 URLs -> ./links\turkey_super_lig_2025-2026.txt
+  Sleeping 5.5s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/turkey/super-lig-2024-2025/results/
+  Loading: https://us.soccerway.com/turkey/super-lig-2024-2025/results/
+  turkey_super_lig 2024-2025 — 342 match links collected …ore' (3x) …
+  ✓ turkey_super_lig 2024-2025 — 342 match links  (3 'Show more' click(s))
+  ✓ Saved 342 URLs -> ./links\turkey_super_lig_2024-2025.txt
+  Sleeping 8.4s between leagues …
+
+League 28/28: africa_caf_champions_league
+
+══════════════════════════════════════════════════════════════════
+  League: africa_caf_champions_league
+══════════════════════════════════════════════════════════════════
+  Detecting current season from archive …
+  Heuristic season: 2025-2026
+  Found 2024-2025 in archive: https://us.soccerway.com/africa/caf-champions-league-2024-2025/results/
+
+  -- 2025-2026  ->  https://us.soccerway.com/africa/caf-champions-league/results/
+  Loading: https://us.soccerway.com/africa/caf-champions-league/results/
+  africa_caf_champions_league 2025-2026 — 148 match links collected …ore' (1x) …
+  ✓ africa_caf_champions_league 2025-2026 — 148 match links  (1 'Show more' click(s))
+  ✓ Saved 148 URLs -> ./links\africa_caf_champions_league_2025-2026.txt
+  Sleeping 9.0s between seasons …
+
+  -- 2024-2025  ->  https://us.soccerway.com/africa/caf-champions-league-2024-2025/results/
+  Loading: https://us.soccerway.com/africa/caf-champions-league-2024-2025/results/
+  africa_caf_champions_league 2024-2025 — 148 match links collected …ore' (1x) …
+  ✓ africa_caf_champions_league 2024-2025 — 148 match links  (1 'Show more' click(s))
+  ✓ Saved 148 URLs -> ./links\africa_caf_champions_league_2024-2025.txt
+  Chrome closed.
+
+==================================================================
+  DONE  --  Total time: 25m 44s
+==================================================================
+
+  Output files in './links':
+
+    africa_caf_champions_league_2024-2025.txt                           148 URLs
+    africa_caf_champions_league_2025-2026.txt                           148 URLs
+    egypt_egypt_cup_2024-2025.txt                                        31 URLs
+    egypt_egypt_cup_2025-2026.txt                                        30 URLs
+    egypt_premier_league_2024-2025.txt                                  225 URLs
+    egypt_premier_league_2025-2026.txt                                  230 URLs
+    england_championship_2024-2025.txt                                  557 URLs
+    england_championship_2025-2026.txt                                  490 URLs
+    england_premier_league_2024-2025.txt                                380 URLs
+    england_premier_league_2025-2026.txt                                309 URLs
+    europe_champions_league_2024-2025.txt                               279 URLs
+    europe_champions_league_2025-2026.txt                               272 URLs
+    europe_conference_league_2024-2025.txt                              409 URLs
+    europe_conference_league_2025-2026.txt                              396 URLs
+    europe_europa_league_2024-2025.txt                                  269 URLs
+    europe_europa_league_2025-2026.txt                                  259 URLs
+    europe_nations_league_2024-2025.txt                                 188 URLs
+    france_ligue_1_2024-2025.txt                                        310 URLs
+    france_ligue_1_2025-2026.txt                                        251 URLs
+    france_ligue_2_2024-2025.txt                                        308 URLs
+    france_ligue_2_2025-2026.txt                                        261 URLs
+    germany_2_bundesliga_2024-2025.txt                                  308 URLs
+    germany_2_bundesliga_2025-2026.txt                                  252 URLs
+    germany_bundesliga_2024-2025.txt                                    308 URLs
+    germany_bundesliga_2025-2026.txt                                    252 URLs
+    italy_serie_a_2024-2025.txt                                         380 URLs
+    italy_serie_a_2025-2026.txt                                         310 URLs
+    italy_serie_b_2024-2025.txt                                         390 URLs
+    italy_serie_b_2025-2026.txt                                         329 URLs
+    japan_j1_league_2025-2026.txt                                        92 URLs
+    japan_j2_league_2025-2026.txt                                       383 URLs
+    mexico_liga_mx_2024-2025.txt                                        340 URLs
+    mexico_liga_mx_2025-2026.txt                                        287 URLs
+    netherlands_eerste_divisie_2024-2025.txt                            380 URLs
+    netherlands_eerste_divisie_2025-2026.txt                            349 URLs
+    netherlands_eredivisie_2024-2025.txt                                321 URLs
+    netherlands_eredivisie_2025-2026.txt                                261 URLs
+    saudi_saudi_pro_league_2024-2025.txt                                306 URLs
+    saudi_saudi_pro_league_2025-2026.txt                                246 URLs
+    south_america_copa_libertadores_2025-2026.txt                        36 URLs
+    south_america_copa_sudamericana_2025-2026.txt                        21 URLs
+    spain_laliga2_2024-2025.txt                                         468 URLs
+    spain_laliga2_2025-2026.txt                                         374 URLs
+    spain_laliga_2024-2025.txt                                          380 URLs
+    spain_laliga_2025-2026.txt                                          300 URLs
+    turkey_super_lig_2024-2025.txt                                      342 URLs
+    turkey_super_lig_2025-2026.txt                                      251 URLs
+    world_club_world_cup_2025-2026.txt                                   64 URLs
+    world_world_cup_current.txt                                         905 URLs
+
+    TOTAL                                                             14385 URLs
