@@ -1209,14 +1209,14 @@ def scrape_file(file_path: str, driver: webdriver.Chrome, debug: bool = False) -
                 "cumulative_total_s":    round(cumulative_total, 2),
             })
 
-            print(f"\n  ⏱  Summary  : {timing['t_summary_s']}s  "
+            print(f"\n  Summary  : {timing['t_summary_s']}s  "
                   f"(+{timing['sleep_after_summary_s']}s sleep)")
-            print(f"  ⏱  Stats    : {timing['t_stats_s']}s  "
+            print(f"  Stats    : {timing['t_stats_s']}s  "
                   f"(+{timing['sleep_after_stats_s']}s sleep)")
-            print(f"  ⏱  Lineups  : {timing['t_lineups_s']}s")
-            print(f"  ⏱  Pure scrape (no sleep) : {timing['t_scrape_only_s']}s")
-            print(f"  ⏱  Match total     : {timing['t_total_s']}s")
-            print(f"  ⏱  Cumulative total: {cumulative_total:.2f}s  "
+            print(f"  Lineups  : {timing['t_lineups_s']}s")
+            print(f"  Pure scrape (no sleep) : {timing['t_scrape_only_s']}s")
+            print(f"  Match total     : {timing['t_total_s']}s")
+            print(f"  Cumulative total: {cumulative_total:.2f}s  "
                   f"({cumulative_total/60:.1f} min)")
 
         except Exception as e:
@@ -1228,8 +1228,8 @@ def scrape_file(file_path: str, driver: webdriver.Chrome, debug: bool = False) -
         # ── Random sleep between matches (skip after last match) ──────────────
         sleep_between = 0.0
         if i < total:
-            sleep_between = jitter_sleep(4.0, 8.0)
-            print(f"  💤 Sleeping {sleep_between:.1f}s before next match...")
+            sleep_between = jitter_sleep(2.0, 4.0)
+            print(f"  Sleeping {sleep_between:.1f}s before next match...")
 
         log_row["sleep_before_next_match_s"] = round(sleep_between, 2)
         cumulative_total += sleep_between
@@ -1333,8 +1333,11 @@ def main():
             for fp in txt_files:
                 print(f"    • {fp}")
 
-            for fp in txt_files:
+            for i, fp in enumerate(txt_files):
                 scrape_file(fp, driver=driver, debug=args.debug)
+                if i < len(txt_files) - 1:
+                    sleep_between = jitter_sleep(30.0, 60.0)
+                    print(f"  💤 Sleeping {sleep_between:.1f}s before next file...")
 
         else:
             # ── Single-URL / default mode ─────────────────────────────────────
@@ -1391,14 +1394,14 @@ def main():
                         "cumulative_total_s":    round(cumulative_total, 2),
                     })
 
-                    print(f"\n  ⏱  Summary  : {timing['t_summary_s']}s  "
+                    print(f"\n  Summary  : {timing['t_summary_s']}s  "
                           f"(+{timing['sleep_after_summary_s']}s sleep)")
-                    print(f"  ⏱  Stats    : {timing['t_stats_s']}s  "
+                    print(f"Stats    : {timing['t_stats_s']}s  "
                           f"(+{timing['sleep_after_stats_s']}s sleep)")
-                    print(f"  ⏱  Lineups  : {timing['t_lineups_s']}s")
-                    print(f"  ⏱  Pure scrape (no sleep) : {timing['t_scrape_only_s']}s")
-                    print(f"  ⏱  Match total     : {timing['t_total_s']}s")
-                    print(f"  ⏱  Cumulative total: {cumulative_total:.2f}s  "
+                    print(f"  Lineups  : {timing['t_lineups_s']}s")
+                    print(f"  Pure scrape (no sleep) : {timing['t_scrape_only_s']}s")
+                    print(f"  Match total     : {timing['t_total_s']}s")
+                    print(f"  Cumulative total: {cumulative_total:.2f}s  "
                           f"({cumulative_total/60:.1f} min)")
 
                 except Exception as e:
@@ -1409,8 +1412,8 @@ def main():
 
                 sleep_between = 0.0
                 if i < total:
-                    sleep_between = jitter_sleep(4.0, 8.0)
-                    print(f"  💤 Sleeping {sleep_between:.1f}s before next match...")
+                    sleep_between = jitter_sleep(2.0, 4.0)
+                    print(f" Sleeping {sleep_between:.1f}s before next match...")
 
                 log_row["sleep_before_next_match_s"] = round(sleep_between, 2)
                 cumulative_total += sleep_between
