@@ -15,16 +15,16 @@
     england_premier_league_2024-2025.txt                                380 URLs    done
     england_premier_league_2025-2026.txt                                309 URLs    done
     europe_champions_league_2024-2025.txt                               279 URLs    zyad    done
-    europe_champions_league_2025-2026.txt                               272 URLs
-    europe_conference_league_2024-2025.txt                              409 URLs
-    europe_conference_league_2025-2026.txt                              396 URLs
-    europe_europa_league_2024-2025.txt                                  269 URLs
-    europe_europa_league_2025-2026.txt                                  259 URLs
+    europe_champions_league_2025-2026.txt                               272 URLs    done 2
+    europe_conference_league_2024-2025.txt                              409 URLs    done 2
+    europe_conference_league_2025-2026.txt                              396 URLs    done 2
+    europe_europa_league_2024-2025.txt                                  269 URLs    done 2
+    europe_europa_league_2025-2026.txt                                  259 URLs    done 2
     europe_nations_league_2024-2025.txt                                 188 URLs
-    france_ligue_1_2024-2025.txt                                        310 URLs    tab
+    france_ligue_1_2024-2025.txt                                        310 URLs    tab    done 2
     france_ligue_1_2025-2026.txt                                        251 URLs    done
-    france_ligue_2_2024-2025.txt                                        308 URLs    tab
-    france_ligue_2_2025-2026.txt                                        261 URLs    tab
+    france_ligue_2_2024-2025.txt                                        308 URLs    tab    done 2
+    france_ligue_2_2025-2026.txt                                        261 URLs    tab    done 2
     germany_2_bundesliga_2024-2025.txt                                  308 URLs
     germany_2_bundesliga_2025-2026.txt                                  252 URLs
     germany_bundesliga_2024-2025.txt                                    308 URLs
@@ -40,9 +40,9 @@
     netherlands_eerste_divisie_2024-2025.txt                            380 URLs
     netherlands_eerste_divisie_2025-2026.txt                            349 URLs
     netherlands_eredivisie_2024-2025.txt                                321 URLs
-    netherlands_eredivisie_2025-2026.txt                                261 URLs
-    saudi_saudi_pro_league_2024-2025.txt                                306 URLs
-    saudi_saudi_pro_league_2025-2026.txt                                246 URLs
+    netherlands_eredivisie_2025-2026.txt                                261 URLs    done 2
+    saudi_saudi_pro_league_2024-2025.txt                                306 URLs    done 2
+    saudi_saudi_pro_league_2025-2026.txt                                246 URLs    done 2
     south_america_copa_libertadores_2025-2026.txt                        36 URLs
     south_america_copa_sudamericana_2025-2026.txt                        21 URLs
     spain_laliga2_2024-2025.txt                                         468 URLs
