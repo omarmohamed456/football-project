@@ -9,11 +9,11 @@
     egypt_egypt_cup_2024-2025.txt                                        31 URLs    done
     egypt_egypt_cup_2025-2026.txt                                        30 URLs    done
     egypt_premier_league_2024-2025.txt                                  225 URLs    done
-    egypt_premier_league_2025-2026.txt                                  230 URLs    done
-    england_championship_2024-2025.txt                                  557 URLs
+    egypt_premier_league_2025-2026.txt                                  230 URLs    done 0
+    england_championship_2024-2025.txt                                  557 URLs    done 3
     england_championship_2025-2026.txt                                  490 URLs    zyad    done
     england_premier_league_2024-2025.txt                                380 URLs    done
-    england_premier_league_2025-2026.txt                                309 URLs    done
+    england_premier_league_2025-2026.txt                                309 URLs    done 0
     europe_champions_league_2024-2025.txt                               279 URLs    zyad    done
     europe_champions_league_2025-2026.txt                               272 URLs    done 2
     europe_conference_league_2024-2025.txt                              409 URLs    done 2
@@ -26,32 +26,32 @@
     france_ligue_2_2024-2025.txt                                        308 URLs    tab    done 2
     france_ligue_2_2025-2026.txt                                        261 URLs    tab    done 2
     germany_2_bundesliga_2024-2025.txt                                  308 URLs
-    germany_2_bundesliga_2025-2026.txt                                  252 URLs
+    germany_2_bundesliga_2025-2026.txt                                  252 URLs    done 3
     germany_bundesliga_2024-2025.txt                                    308 URLs
-    germany_bundesliga_2025-2026.txt                                    252 URLs
-    italy_serie_a_2024-2025.txt                                         380 URLs
+    germany_bundesliga_2025-2026.txt                                    252 URLs    done 0
+    italy_serie_a_2024-2025.txt                                         380 URLs    done 3
     italy_serie_a_2025-2026.txt                                         310 URLs
     italy_serie_b_2024-2025.txt                                         390 URLs    done
     italy_serie_b_2025-2026.txt                                         329 URLs    done
     japan_j1_league_2025-2026.txt                                        92 URLs    done
     japan_j2_league_2025-2026.txt                                       383 URLs    done
-    mexico_liga_mx_2024-2025.txt                                        340 URLs
-    mexico_liga_mx_2025-2026.txt                                        287 URLs
-    netherlands_eerste_divisie_2024-2025.txt                            380 URLs
+    mexico_liga_mx_2024-2025.txt                                        340 URLs    done 3
+    mexico_liga_mx_2025-2026.txt                                        287 URLs    done 3
+    netherlands_eerste_divisie_2024-2025.txt                            380 URLs    done 3
     netherlands_eerste_divisie_2025-2026.txt                            349 URLs
     netherlands_eredivisie_2024-2025.txt                                321 URLs
     netherlands_eredivisie_2025-2026.txt                                261 URLs    done 2
     saudi_saudi_pro_league_2024-2025.txt                                306 URLs    done 2
     saudi_saudi_pro_league_2025-2026.txt                                246 URLs    done 2
-    south_america_copa_libertadores_2025-2026.txt                        36 URLs
-    south_america_copa_sudamericana_2025-2026.txt                        21 URLs
+    south_america_copa_libertadores_2025-2026.txt                        36 URLs    done 3
+    south_america_copa_sudamericana_2025-2026.txt                        21 URLs    done 3
     spain_laliga2_2024-2025.txt                                         468 URLs
     spain_laliga2_2025-2026.txt                                         374 URLs
     spain_laliga_2024-2025.txt                                          380 URLs
     spain_laliga_2025-2026.txt                                          300 URLs
     turkey_super_lig_2024-2025.txt                                      342 URLs
-    turkey_super_lig_2025-2026.txt                                      251 URLs
-    world_club_world_cup_2025-2026.txt                                   64 URLs
+    turkey_super_lig_2025-2026.txt                                      251 URLs    done 3
+    world_club_world_cup_2025-2026.txt                                   64 URLs    done 3
     world_world_cup_current.txt                                         905 URLs
 
     TOTAL                                                             14385 URLs

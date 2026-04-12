@@ -1,0 +1,22 @@
+scraped_at,url,success,reason,non_empty_fields,t_summary_s,sleep_after_summary_s,t_stats_s,sleep_after_stats_s,t_lineups_s,t_scrape_only_s,t_total_s,sleep_before_next_match_s,cumulative_total_s
+2026-04-12 01:13:26,https://us.soccerway.com/game/a-italiano-rN3Jxc8g/cobresal-YeUwzehC/?mid=EFC9lUs4,True,none,117,8.52,1.37,2.27,1.96,2.84,13.63,17.11,2.3,19.41
+2026-04-12 01:13:45,https://us.soccerway.com/game/academia-puerto-cabello-Mgr9ojjj/monagas-MHPrulvq/?mid=t2E1jjDi,False,no_stats,17,3.62,0.57,3.24,0.0,0.0,6.86,7.52,3.76,30.7
+2026-04-12 01:13:57,https://us.soccerway.com/game/alianza-atl-GlLFjAIU/deportivo-garcilaso-pQ8DJXPR/?mid=KIWTg42n,False,no_stats,17,5.21,1.13,1.89,0.0,0.0,7.1,8.29,2.16,41.15
+2026-04-12 01:14:07,https://us.soccerway.com/game/alianza-atl-GlLFjAIU/tigre-nkwO1uw4/?mid=KzRYRDtf,False,no_stats,18,4.05,1.35,1.99,0.0,0.0,6.04,7.48,2.93,51.56
+2026-04-12 01:14:18,https://us.soccerway.com/game/america-de-cali-Oh9HQv4e/bucaramanga-I1DMa0eR/?mid=nojwjM1B,True,none,115,4.75,0.91,1.93,1.38,2.65,9.33,11.78,2.17,65.51
+2026-04-12 01:14:32,https://us.soccerway.com/game/atl-nacional-C23omttL/millonarios-OWsQjdID/?mid=As6In8CG,True,none,115,2.83,1.12,2.1,1.25,1.59,6.52,9.04,2.98,77.53
+2026-04-12 01:14:44,https://us.soccerway.com/game/barracas-central-hW08cP6J/vasco-2RABlYFn/?mid=nuA1k8vI,True,none,115,1.96,0.55,2.04,1.57,1.66,5.66,7.95,2.89,88.37
+2026-04-12 01:14:54,https://us.soccerway.com/game/blooming-hSlWpwD9/san-antonio-bulo-bulo-AoMZyUBM/?mid=jXiX3FtR,True,none,117,1.51,1.28,1.89,0.92,1.69,5.09,7.46,2.04,97.87
+2026-04-12 01:15:04,https://us.soccerway.com/game/boston-river-U1MuWpN3/racing-montevideo-thR1R82f/?mid=80vnl0WN,True,none,117,2.33,1.03,2.11,0.79,1.7,6.14,8.12,3.14,109.13
+2026-04-12 01:15:15,https://us.soccerway.com/game/boston-river-U1MuWpN3/sao-paulo-QgP0oAUH/?mid=roQ5tDem,True,none,115,1.46,0.94,1.94,1.98,1.85,5.25,8.33,2.98,120.44
+2026-04-12 01:15:27,https://us.soccerway.com/game/caracas-l6AbuB1S/metropolitanos-GjYmyonC/?mid=2uocuQ4j,True,none,115,2.52,1.2,2.31,1.98,2.06,6.89,10.25,3.99,134.68
+2026-04-12 01:15:41,https://us.soccerway.com/game/cienciano-82OXAD3n/fbc-melgar-IZO9NXIh/?mid=44Ri17R9,True,none,115,2.02,1.38,1.95,1.19,1.84,5.81,8.56,3.79,147.03
+2026-04-12 01:15:53,https://us.soccerway.com/game/defensor-sp-U9v7QSIL/montevideo-city-lpWdsUdH/?mid=I79QpnsT,False,no_stats,18,3.14,0.84,1.5,0.0,0.0,4.64,5.6,2.91,155.54
+2026-04-12 01:16:02,https://us.soccerway.com/game/dep-cuenca-KQ6zRt9a/libertad-vB5IpIzn/?mid=CpJJzl4N,True,none,115,2.75,1.73,1.73,0.9,1.46,5.94,8.73,2.57,166.83
+2026-04-12 01:16:13,https://us.soccerway.com/game/guabira-vmm0pHsM/independiente-8AXozsR8/?mid=MFr3bg4l,True,none,115,2.91,1.41,1.88,0.66,1.81,6.6,8.83,2.91,178.57
+2026-04-12 01:16:25,https://us.soccerway.com/game/independiente-8AXozsR8/racing-club-OhapHPm9/?mid=045weCAt,True,none,115,1.8,1.55,1.7,0.8,1.68,5.18,7.7,3.36,189.64
+2026-04-12 01:16:36,https://us.soccerway.com/game/macara-QN9rPKwC/orense-4MwdGZV3/?mid=t09kVRRp,True,none,115,2.08,1.16,1.87,0.75,1.56,5.51,7.58,2.04,199.26
+2026-04-12 01:16:45,https://us.soccerway.com/game/millonarios-OWsQjdID/o-higgins-hYrshGxg/?mid=C2ZZoZXP,True,none,118,2.67,0.96,1.35,1.27,1.73,5.75,8.15,2.65,210.06
+2026-04-12 01:16:56,https://us.soccerway.com/game/nacional-asuncion-tlTrrCBA/recoleta-WhS2lQYL/?mid=vqVHrvfo,True,none,117,2.28,0.66,1.78,1.78,1.72,5.78,8.37,2.93,221.36
+2026-04-12 01:17:08,https://us.soccerway.com/game/olimpia-asuncion-b9eesWQG/sportivo-trinidense-WdYZQrTO/?mid=vLnVirXb,True,none,115,2.84,0.57,1.36,0.96,1.68,5.88,7.6,3.1,232.06
+2026-04-12 01:17:18,https://us.soccerway.com/game/palestino-U35cjf75/u-de-chile-xW771C6U/?mid=8xYr3Tdc,True,none,117,2.77,0.82,1.4,1.55,1.51,5.68,8.21,0.0,240.27
