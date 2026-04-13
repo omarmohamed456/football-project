@@ -20,17 +20,17 @@
     europe_conference_league_2025-2026.txt                              396 URLs    done 2
     europe_europa_league_2024-2025.txt                                  269 URLs    done 2
     europe_europa_league_2025-2026.txt                                  259 URLs    done 2
-    europe_nations_league_2024-2025.txt                                 188 URLs
+    europe_nations_league_2024-2025.txt                                 188 URLs    done 4
     france_ligue_1_2024-2025.txt                                        310 URLs    tab    done 2
     france_ligue_1_2025-2026.txt                                        251 URLs    done
     france_ligue_2_2024-2025.txt                                        308 URLs    tab    done 2
     france_ligue_2_2025-2026.txt                                        261 URLs    tab    done 2
-    germany_2_bundesliga_2024-2025.txt                                  308 URLs
+    germany_2_bundesliga_2024-2025.txt                                  308 URLs    done 4
     germany_2_bundesliga_2025-2026.txt                                  252 URLs    done 3
-    germany_bundesliga_2024-2025.txt                                    308 URLs
+    germany_bundesliga_2024-2025.txt                                    308 URLs    done 4
     germany_bundesliga_2025-2026.txt                                    252 URLs    done 0
     italy_serie_a_2024-2025.txt                                         380 URLs    done 3
-    italy_serie_a_2025-2026.txt                                         310 URLs
+    italy_serie_a_2025-2026.txt                                         310 URLs    done 4
     italy_serie_b_2024-2025.txt                                         390 URLs    done
     italy_serie_b_2025-2026.txt                                         329 URLs    done
     japan_j1_league_2025-2026.txt                                        92 URLs    done
@@ -38,20 +38,20 @@
     mexico_liga_mx_2024-2025.txt                                        340 URLs    done 3
     mexico_liga_mx_2025-2026.txt                                        287 URLs    done 3
     netherlands_eerste_divisie_2024-2025.txt                            380 URLs    done 3
-    netherlands_eerste_divisie_2025-2026.txt                            349 URLs
-    netherlands_eredivisie_2024-2025.txt                                321 URLs
+    netherlands_eerste_divisie_2025-2026.txt                            349 URLs    done 4
+    netherlands_eredivisie_2024-2025.txt                                321 URLs    done 4
     netherlands_eredivisie_2025-2026.txt                                261 URLs    done 2
     saudi_saudi_pro_league_2024-2025.txt                                306 URLs    done 2
     saudi_saudi_pro_league_2025-2026.txt                                246 URLs    done 2
     south_america_copa_libertadores_2025-2026.txt                        36 URLs    done 3
     south_america_copa_sudamericana_2025-2026.txt                        21 URLs    done 3
-    spain_laliga2_2024-2025.txt                                         468 URLs
-    spain_laliga2_2025-2026.txt                                         374 URLs
-    spain_laliga_2024-2025.txt                                          380 URLs
-    spain_laliga_2025-2026.txt                                          300 URLs
-    turkey_super_lig_2024-2025.txt                                      342 URLs
+    spain_laliga2_2024-2025.txt                                         468 URLs    done 4
+    spain_laliga2_2025-2026.txt                                         374 URLs    done 4
+    spain_laliga_2024-2025.txt                                          380 URLs    done 4
+    spain_laliga_2025-2026.txt                                          300 URLs    done 4
+    turkey_super_lig_2024-2025.txt                                      342 URLs    done 4
     turkey_super_lig_2025-2026.txt                                      251 URLs    done 3
     world_club_world_cup_2025-2026.txt                                   64 URLs    done 3
-    world_world_cup_current.txt                                         905 URLs
+    world_world_cup_current.txt                                         905 URLs    done 4
 
     TOTAL                                                             14385 URLs
