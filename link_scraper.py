@@ -1,26 +1,3 @@
-"""
-scrape_links.py
----------------
-Scrapes Soccerway match result URLs across multiple leagues / seasons.
-
-REQUIREMENTS:
-    pip install selenium webdriver-manager beautifulsoup4
-
-── MODES ─────────────────────────────────────────────────────────────────────
-  --link URL          Scrape a single results page, save to --output-dir
-  --file FILE         Read one results-page URL per line, scrape each one
-  --league KEY        Scrape all configured seasons for one league (substring)
-  --prefix PREFIX     Scrape all leagues whose prefix matches (e.g. egypt_)
-  (no args)           Scrape ALL configured leagues (current + 2024-2025)
-
-── EXAMPLES ──────────────────────────────────────────────────────────────────
-  python scrape_links.py --link "https://us.soccerway.com/germany/bundesliga/results/"
-  python scrape_links.py --file my_urls.txt --output-dir ./out
-  python scrape_links.py --league bundesliga
-  python scrape_links.py --prefix germany_
-  python scrape_links.py --output-dir ./links
-"""
-
 import argparse
 import os
 import re
@@ -367,11 +344,70 @@ def make_filename(prefix, key, season):
     return f"{prefix}{key}_{season}.txt"
 
 
-def slug_from_url(url):
-    """Build a safe filename slug from a URL."""
-    parts = [p for p in url.rstrip("/").split("/") if p and p not in ("https:", "us.soccerway.com")]
-    slug  = "_".join(parts[-3:]) if len(parts) >= 3 else "_".join(parts)
-    return re.sub(r"[^a-z0-9_-]", "_", slug.lower())
+def make_filename_from_url(url):
+    """
+    Derive prefix, key, and season from a results-page URL so the output
+    filename always matches the make_filename() format.
+
+    Handles three season patterns in URL slugs or as standalone segments:
+      - Standalone YYYY-YYYY  : /qatar/qsl/2024-2025/results/
+      - Embedded YYYY-YYYY    : /germany/bundesliga-2024-2025/results/
+      - Embedded single YYYY  : /usa/mls-2025/results/
+
+    Single YYYY is expanded:
+      - Month >= 7  → YYYY to YYYY-(YYYY+1)   e.g. 2025 → 2025-2026
+      - Month <  7  → (YYYY-1)-YYYY            e.g. 2025 → 2024-2025
+    """
+    parts = [p for p in url.rstrip("/").split("/")
+             if p and p not in ("https:", "us.soccerway.com", "results")]
+
+    season     = None
+    non_season = []
+
+    for p in parts:
+        # Standalone YYYY-YYYY segment
+        m = re.match(r"^(\d{4}-\d{4})$", p)
+        if m and season is None:
+            season = m.group(1)
+            continue
+
+        # Embedded YYYY-YYYY inside slug  e.g. bundesliga-2024-2025
+        m = re.search(r"-(\d{4}-\d{4})$", p)
+        if m and season is None:
+            season = m.group(1)
+            p = p[:m.start()]           # strip season from slug
+            non_season.append(p)
+            continue
+
+        # Embedded single YYYY inside slug  e.g. mls-2025 → keep as "2025"
+        m = re.search(r"-(\d{4})$", p)
+        if m and season is None:
+            season = m.group(1)
+            p = p[:m.start()]           # strip year from slug
+            non_season.append(p)
+            continue
+
+        non_season.append(p)
+
+    # Fallback: infer YYYY-YYYY season from current date
+    if season is None:
+        today  = datetime.now()
+        y      = today.year
+        season = f"{y}-{y+1}" if today.month >= 7 else f"{y-1}-{y}"
+
+    # Last two meaningful path segments → prefix + key
+    if len(non_season) >= 2:
+        prefix = non_season[-2].replace("-", "_") + "_"
+        key    = non_season[-1].replace("-", "_")
+    elif len(non_season) == 1:
+        prefix = ""
+        key    = non_season[-1].replace("-", "_")
+    else:
+        prefix = ""
+        key    = "unknown"
+
+    return make_filename(prefix, key, season)
+
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -451,7 +487,7 @@ def process_single_link(driver, url, output_dir):
     links = scrape_results_page(driver, url, label=url)
 
     if links:
-        fname = slug_from_url(url) + ".txt"
+        fname = make_filename_from_url(url)
         path  = save_links(links, output_dir, fname)
         ok(f"Saved {len(links)} URLs -> {path}")
     else:
@@ -480,7 +516,7 @@ def process_file(driver, file_path, output_dir):
         links = scrape_results_page(driver, url, tag)
 
         if links:
-            fname = slug_from_url(url) + ".txt"
+            fname = make_filename_from_url(url)
             path  = save_links(links, output_dir, fname)
             ok(f"Saved {len(links)} URLs -> {path}")
         else:
