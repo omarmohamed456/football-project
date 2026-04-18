@@ -13,6 +13,9 @@ An end-to-end machine learning project covering the collection, analysis, and pr
   - [Requirements](#requirements)
   - [Link Scraper](#link-scraper)
   - [Match Scraper](#match-scraper)
+  - [Full Scraper](#full-scraper)
+  - [Retry Low Fields](#retry-low-fields)
+  - [Combine CSVs](#combine-csvs)
 - [2. Analysis](#2-analysis)
 - [3. Machine Learning](#3-machine-learning)
 
@@ -22,13 +25,19 @@ An end-to-end machine learning project covering the collection, analysis, and pr
 
 ```
 project/
-├── link_scraper.py          # Stage 1: collect match URLs
-├── match_scraper.py         # Stage 2: scrape match data
+├── scraper/
+│   ├── link_scraper.py          # Stage 1: collect match URLs
+│   ├── match_scraper.py         # Stage 2: scrape match data
+│   ├── full_scraper.py          # Orchestrator: runs link_scraper → match_scraper
+│   ├── retry_low_fields.py      # Re-scrape incomplete or failed rows
+│   ├── combine_csv.py           # Merge multiple data CSVs into one
+│   │
+│   ├── links/                   # .txt files produced by link_scraper.py
+│   ├── scraped_links/           # .txt files moved here after scraping
+│   ├── scraped_data/            # match data CSVs
+│   └── scraped_logs/            # per-file scrape log CSVs
 │
-├── links/                   # .txt files produced by link_scraper.py
-├── scraped_links/           # .txt files moved here after scraping
-├── scraped_data/            # match data CSVs
-└── scraped_logs/            # per-file scrape log CSVs
+└── link_scraping_log/           # text files tracking which leagues were scraped
 ```
 
 ---
@@ -59,7 +68,7 @@ Google Chrome must be installed on the system. `webdriver-manager` downloads the
 
 ### Link Scraper
 
-**Script:** `link_scraper.py`
+**Script:** `scraper/link_scraper.py`
 
 Navigates to a league's results page, clicks "Show more matches" repeatedly until all matches are loaded, then extracts and saves every match URL. Only links from within match-row containers are collected; navigation links, team profile pages, and other incidental links on the page are excluded.
 
@@ -67,12 +76,28 @@ Output files are named after the league and season they correspond to, for examp
 
 ```
 egypt_premier_league_2024-2025.txt
-england_premier_league_2025-2026.txt
-england_premier_league_2024-2025.txt
-germany_bundesliga_2024-2025.txt
 ```
 
 The `egypt_` prefix is used to distinguish the Egyptian Premier League from the English one. All 28 configured leagues follow the same naming convention.
+
+**Configured leagues:**
+
+| Region | Leagues |
+|---|---|
+| Egypt | Premier League, Egypt Cup |
+| England | Premier League, Championship |
+| France | Ligue 1, Ligue 2 |
+| Germany | Bundesliga, 2. Bundesliga |
+| Italy | Serie A, Serie B |
+| Spain | LaLiga, LaLiga 2 |
+| Netherlands | Eredivisie, Eerste Divisie |
+| Europe | Champions League, Europa League, Conference League, Nations League |
+| World | World Cup, Club World Cup |
+| South America | Copa Libertadores, Copa Sudamericana |
+| Mexico | Liga MX |
+| Japan | J1 League, J2 League |
+| Middle East | Saudi Pro League, Süper Lig |
+| Africa | CAF Champions League |
 
 **Modes and flags:**
 
@@ -88,11 +113,13 @@ The `egypt_` prefix is used to distinguish the Egyptian Premier League from the 
 **Examples:**
 
 ```bash
+cd scraper
+
 # Test a single results page
 python link_scraper.py --link "https://us.soccerway.com/germany/bundesliga/results/"
 
 # Scrape from a custom list of results URLs
-python link_scraper.py --file my_urls.txt --output-dir ./out
+python link_scraper.py --file my_urls.txt --output-dir ../links
 
 # Scrape one configured league (both seasons)
 python link_scraper.py --league bundesliga
@@ -101,30 +128,43 @@ python link_scraper.py --league bundesliga
 python link_scraper.py --prefix germany_
 
 # Scrape all configured leagues
-python link_scraper.py --output-dir ./links
+python link_scraper.py --output-dir ../links
 ```
 
 ---
 
 ### Match Scraper
 
-**Script:** `match_scraper.py`
+**Script:** `scraper/match_scraper.py`
 
 For each match URL, the scraper visits three tabs on the match page — Summary, Stats, and Lineups — and consolidates the data into a single row. Results are written to a CSV file incrementally after each match so that progress is not lost if the run is interrupted. A separate log CSV is written alongside the data file to record timing information, success status, and failure reasons for every URL.
 
 **Data collected:**
 
-- **Summary:** league, division, season, round, date, kick-off time, home team, away team, score, result, attendance, capacity, stadium, city
-- **Stats:** shots on/off target, possession, corners, fouls, yellow/red cards, offsides, passes, crosses, tackles, clearances, interceptions, xG, xA, and more
-- **Lineups:** home and away formation, home and away team rating
+- **Identity:** match ID, league/division, round, date, kick-off time, attendance, capacity, stadium, city, home team, away team, score, result
+- **Tactical:** home/away formation, home/away team rating
+- **Shots:** total, on/off target, inside/outside box, headed goals, hit woodwork
+- **Set pieces:** corners, free kicks, throw-ins
+- **Discipline:** fouls, offsides, yellow/red cards
+- **Goalkeeper:** saves
+- **Possession/Pressure:** possession %, touches in opposition box
+- **Passing:** overall, long balls, final third passes (%, successful, total for each)
+- **Crossing:** crosses (%, successful, total)
+- **Other attacking:** big chances, duels won, errors leading to shot/goal, accurate through-passes
+- **Defending:** tackles (%, successful, total), shots blocked, clearances, interceptions
+- **Expected stats:** xG, xGOT, xA, xGOT faced, goals prevented
 
-**File management:** after a `.txt` file has been fully processed, the scraper moves it from `links/` to `scraped_links/`. Data CSVs are saved to `scraped_data/` and log CSVs to `scraped_logs/`, each named after the source `.txt` file.
+**File management:** after a `.txt` file has been fully processed, the scraper moves it from `links/` to `scraped_links/`. Data CSVs are saved to `scraped_data/` and log CSVs to `scraped_logs/`, each named after the source `.txt` file, for example:
+```
+egypt_premier_league_2024-2025_match_data.csv
+egypt_premier_league_2024-2025_scrape_log.csv
+```
 
 **Log columns:**
 
 `scraped_at`, `url`, `success`, `reason`, `non_empty_fields`, `t_summary_s`, `sleep_after_summary_s`, `t_stats_s`, `sleep_after_stats_s`, `t_lineups_s`, `t_scrape_only_s`, `t_total_s`, `sleep_before_next_match_s`, `cumulative_total_s`
 
-The `reason` field records why a match was not scraped successfully, for example `no_data`, `403`, `404`, or a truncated exception message.
+The `reason` field records why a match was not scraped successfully, for example `no_data`, `403`, `404`, `no_stats`, `no_lineups`, or a truncated exception message.
 
 **Flags:**
 
@@ -140,28 +180,137 @@ The `reason` field records why a match was not scraped successfully, for example
 **Examples:**
 
 ```bash
+cd scraper
+
 # Scrape a single match (useful for testing)
-python match_scraper.py --url "https://us.soccerway.com/match/..."
+python match_scraper.py --url "https://us.soccerway.com/game/..."
 
 # Scrape all matches in one file
-python match_scraper.py --file links/germany_bundesliga_2024-2025.txt
+python match_scraper.py --file ../links/germany_bundesliga_2024-2025.txt
 
 # Scrape multiple files in one run
-python match_scraper.py --file links/england_premier_league_2024-2025.txt \
-                                   links/england_championship_2024-2025.txt
+python match_scraper.py --file ../links/england_premier_league_2024-2025.txt \
+                                   ../links/england_championship_2024-2025.txt
 
 # Scrape every .txt file in a directory
-python match_scraper.py --dir ./links
-
-# Combine --dir with extra files
-python match_scraper.py --dir ./links --file extra_matches.txt
+python match_scraper.py --dir ../links
 
 # Save a single match to a named file
-python match_scraper.py --url "https://us.soccerway.com/match/..." \
+python match_scraper.py --url "https://us.soccerway.com/game/..." \
                            --output bvb_vs_fcb.csv --log bvb_vs_fcb_log.csv
 
 # Debug mode
-python match_scraper.py --file links/test.txt --debug
+python match_scraper.py --file ../links/test.txt --debug
+```
+
+---
+
+### Full Scraper
+
+**Script:** `scraper/full_scraper.py`
+
+Orchestrates the full pipeline by running `link_scraper.py` followed by `match_scraper.py` in a single command. Useful when you want to go directly from a results page URL (or a list of them) to finished match data CSVs without running each stage separately.
+
+**Modes:**
+
+- **URL mode** — takes a single results-page URL, runs `link_scraper.py --link` to produce a `.txt` file, then immediately runs `match_scraper.py --file` on it.
+- **File mode** — takes a `.txt` file containing one results-page URL per line, runs `link_scraper.py --file` on it, then runs `match_scraper.py --dir` on the links directory.
+
+**Flags:**
+
+| Flag | Description |
+|---|---|
+| `URL` | Results-page URL to scrape (URL mode) |
+| `--file FILE` / `-f FILE` | Text file with one results-page URL per line (file mode) |
+| `--links-dir DIR` | Folder used for intermediate `.txt` link files (default: `./links`) |
+
+**Examples:**
+
+```bash
+cd scraper
+
+# URL mode: scrape one results page end-to-end
+python full_scraper.py "https://us.soccerway.com/germany/bundesliga/results/"
+
+# File mode: scrape all URLs listed in a file
+python full_scraper.py --file ../my_results_pages.txt
+
+# Custom links directory
+python full_scraper.py "https://us.soccerway.com/spain/laliga/results/" --links-dir ../links
+```
+
+---
+
+### Retry Low Fields
+
+**Script:** `scraper/retry_low_fields.py`
+
+After a scraping run, some matches may have succeeded but returned an unusually low number of populated fields (e.g. stats or lineups tabs failed to load). This script reads one or more `*_scrape_log.csv` files, identifies rows that need retrying, re-scrapes those URLs, and patches the data CSV in place if the new scrape yields more data.
+
+A row is retried if any of the following apply:
+- `non_empty_fields` is below the threshold (default: 30)
+- `reason` is `no_stats` or `no_lineups` (regardless of field count)
+
+A unified retry log (`scraping_failed_urls_log.csv`) is written to the script directory and appended to on every run.
+
+**Retry log columns:**
+
+All original log columns plus: `file_name`, `fields_before`, `fields_after`, `row_updated`, `retry_trigger`, `data_csv_found`
+
+**Flags:**
+
+| Flag | Description |
+|---|---|
+| `--log LOG_CSV [...]` | One or more `*_scrape_log.csv` files to process |
+| `--dir DIR` | Directory to scan for `*_scrape_log.csv` files (existing `*_retry_log*.csv` files are skipped) |
+| `--threshold N` | Re-scrape rows with `non_empty_fields` < N (default: 30). `no_stats` and `no_lineups` rows are always retried regardless |
+| `--debug` | Save raw HTML debug files for each re-scrape |
+
+**Examples:**
+
+```bash
+cd scraper
+
+# Retry a single log file
+python retry_low_fields.py --log ../scraped_logs/germany_bundesliga_2024-2025_scrape_log.csv
+
+# Retry all log files in a directory
+python retry_low_fields.py --dir ../scraped_logs
+
+# Custom threshold
+python retry_low_fields.py --dir ../scraped_logs --threshold 25
+
+# Retry multiple specific log files
+python retry_low_fields.py --log ../scraped_logs/england_premier_league_2024-2025_scrape_log.csv \
+                                  ../scraped_logs/spain_laliga_2024-2025_scrape_log.csv
+```
+
+---
+
+### Combine CSVs
+
+**Script:** `scraper/combine_csv.py`
+
+Concatenates all CSV files in a folder into a single output file. Optionally extracts the season from each filename and inserts it as a column.
+
+**Flags:**
+
+| Flag | Description |
+|---|---|
+| `--folder DIR` | Path to folder containing CSV files (required) |
+| `--output FILE` | Output CSV file name (default: `combined.csv`) |
+| `--season` | Add a `season` column extracted from each source filename |
+
+**Examples:**
+
+```bash
+cd scraper
+
+# Combine all CSVs in scraped_data into one file
+python combine_csv.py --folder ../scraped_data --output ../merged.csv
+
+# Same but add a season column derived from each filename
+python combine_csv.py --folder ../scraped_data --output ../merged.csv --season
 ```
 
 ---
