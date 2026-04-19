@@ -1,9 +1,12 @@
-# Football Data: Scraping, Analysis, and Prediction
+# Football Match Outcome Predictor
 
-An end-to-end machine learning project covering the collection, analysis, and prediction of football match data across multiple leagues and seasons.
+An end-to-end machine learning project covering the collection, processing, and prediction of football match outcomes across 55 leagues and competitions.
+
+The project is structured in three stages: a multi-stage web scraper that collects detailed match data from us.soccerway.com, an exploratory analysis of the resulting dataset, and a machine learning pipeline that predicts match outcomes — Home Win, Draw, or Away Win — using only pre-match information derived from each team's recent form.
+
+Rather than relying on in-match statistics such as shots or possession (which are unavailable before kickoff), the prediction model engineers rolling features from each team's last 5 matches and compares five classification models — Logistic Regression, Random Forest, XGBoost, LightGBM, and SVM — evaluated using per-class F1 score across all three outcome classes.
 
 **Dataset:** [kaggle.com/omarameen99](https://www.kaggle.com/omarameen99)
-
 ---
 
 ## Table of Contents
